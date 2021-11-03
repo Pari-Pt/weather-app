@@ -90,7 +90,7 @@ If the city in which the user submitted is not found, the display will not chang
 <div>[] React JS implementation</div>
 
 <h3>About the Programmer - Seonah Nathali</h3>
-<p>Seonah Nathali is an up-and-coming front-end web developer studying at SheCodes. Keen to develop and demonstrate her skills,  enrolled on the Pro course, and is developing her skills in preparation for a career-change. Previously a forensic scientist and police investigator, she has a multitude of transferable skills which, combined with her passion for programming would be an asset to any team.
+<p>Seonah Nathali is an up-and-coming front-end web developer studying at SheCodes. Keen to develop and demonstrate her skills,  enrolled on the Pro course, and is developing her skills in preparation for a career-change. Previously a forensic scientist and crime investigator, she has a multitude of transferable skills which, combined with her passion for programming would be an asset to any team or organisation.
  <br>
 GitHub: https://github.com/Seo-Pt/
  <br>

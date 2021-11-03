@@ -1,0 +1,121 @@
+body {
+  font-family: "Gluten", cursive;
+}
+h1,
+h2,
+h5,
+h6 {
+  padding: none;
+  text-align: center;
+  display: inline-block;
+  margin-right: auto;
+}
+
+h1 {
+  font-size: 60px;
+  line-height: 70px;
+}
+
+h2 {
+  font-size: 50px;
+  line-height: 50px;
+}
+
+h5 {
+  font-size: 15px;
+}
+
+h6 {
+  font-size: 25px;
+}
+input {
+  border-radius: 10px;
+  display: inline-block;
+  font-size: 15px;
+  margin-right: auto;
+  margin-top: 15px;
+  text-align: left;
+}
+
+button {
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  display: inline-block;
+  font-size: 20px;
+  margin-right: auto;
+  text-align: center;
+}
+
+footer {
+  display: block;
+  font-size: 20px;
+  font-style: italic;
+  margin: auto;
+  text-align: center;
+}
+.main-card {
+  background-image: linear-gradient(
+    102.7deg,
+    rgba(253, 218, 255, 1) 8.2%,
+    rgba(223, 173, 252, 1) 19.6%,
+    rgba(173, 205, 252, 1) 36.8%,
+    rgba(173, 252, 244, 1) 73.2%,
+    rgba(202, 248, 208, 1) 90.9%
+  );
+  border: 2px solid;
+  display: block;
+  margin: 0 auto;
+  max-width: 50%;
+  padding: 5px;
+}
+
+.calendar-card {
+  background-image: linear-gradient(
+    102.7deg,
+    rgba(253, 218, 255, 1) 8.2%,
+    rgba(223, 173, 252, 1) 19.6%,
+    rgba(173, 205, 252, 1) 36.8%,
+    rgba(173, 252, 244, 1) 73.2%,
+    rgba(202, 248, 208, 1) 90.9%
+  );
+  border: 2px solid black;
+  display: block;
+  margin: 0 auto;
+  max-width: 85%;
+  text-align: center;
+  top: -50px;
+}
+
+.feat-icon-card {
+  background: none;
+  border: none;
+  display: block;
+  margin: auto;
+  top: -60px;
+  width: fit-content;
+}
+
+.feat-icon {
+  display: block;
+  width: 200px;
+}
+
+.forecast-info {
+  font-size: 20px;
+  height: 60px;
+}
+.sunny-icon {
+  width: 40px;
+}
+
+.sun-cloud-icon {
+  width: 40px;
+}
+
+.cloud-rain-icon {
+  width: 40px;
+}
+
+.rain-lightning-icon {
+  width: 50px;
+}

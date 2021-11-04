@@ -33,13 +33,7 @@ let months = [
 let month = months[now.getMonth()];
 
 let currentTime = document.querySelector("#current-time");
-let morning = "am";
-let evening = "pm";
-if (hours < 12) {
-  currentTime.innerHTML = `${hours}:${minutes} ${morning}`;
-} else {
-  currentTime.innerHTML = `${hours}:${minutes} ${evening}`;
-}
+currentTime.innerHTML = `${hours}:${minutes}`;
 
 let currentDate = document.querySelector("#current-date");
 currentDate.innerHTML = `${day}, ${date} ${month}`;
@@ -95,6 +89,14 @@ function showTemp(fetchedTemp) {
   let citySearchMin = Math.round(fetchedTemp.data.main.temp_min);
   let currentMinElement = document.querySelector("#current-min");
   currentMinElement.innerHTML = `${citySearchMin}`;
+
+  let citySearchHumidity = Math.round(fetchedTemp.data.main.humidity);
+  let citySearchHumidityElement = document.querySelector("#humidity");
+  citySearchHumidityElement.innerHTML = `Humidity: ${citySearchHumidity}%`;
+
+  let citySearchWindSpeed = Math.round(fetchedTemp.data.wind.speed * 3.6);
+  let citySearchWindSpeedElement = document.querySelector("#wind-speed");
+  citySearchWindSpeedElement.innerHTML = `Wind: ${citySearchWindSpeed}km/h`;
 
   let localCityName = fetchedTemp.data.name;
   let localCityElement = document.querySelector("#current-city");

@@ -22,7 +22,7 @@
       crossorigin="anonymous"
     ></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <link rel="stylesheet" href="src/styles.css">
+    <link rel="stylesheet" href="src/styles.css" />
   </head>
 
   <body>
@@ -31,108 +31,119 @@
         <div class="card-body">
           <div class="container overflow-hidden">
             <div class="row">
-              <div class="col">
+              <div class="col-7">
                 <h1 id="current-city">Porto</h1>
-                <br />
                 <h2 id="current-temp">17°C</h2>
-                <h5>High:<span id="current-max">19</span> - Low:<span id="current-min">9</span></h5>
-                <br />
-                <h6 id="current-time"></h6>
-                <br />
-                <h6 id="current-date"></h6>
-                
-                
+                <div class="high-low-display">
+                  High: <span class="high" id="current-max">19</span> - Low:
+                  <span class="low" id="current-min">9</span>
+                </div>
+
+                <div class="sub-weather" id="humidity"></div>
+                <div class="sub-weather" id="wind-speed"></div>
               </div>
-            
+
               <div class="col text-end">
                 <form id="search-form">
                   <input
                     type="search"
                     placeholder="🔎 Search for a City"
                     id="city-search"
-                    
                   />
                 </form>
-                
+
                 <button id="locator-button">Current Location</button>
-                <br/>
+                <br />
                 <button id="deg-c-button">°C</button>
                 <button id="deg-f-button">°F</button>
+                <div class="date-display" id="current-date"></div>
+                <div class="time-display" id="current-time"></div>
               </div>
             </div>
           </div>
-                  
-                
-          
 
           <div class="card feat-icon-card">
             <div class="card-body feat-icon-card-body">
               <img src="images/sun-icon.png" class="feat-icon" alt="sunny" />
             </div>
           </div>
-        </div>
 
-        <div class="card calendar-card">
-          <div class="card-body">
-            <div class="row row-cols-3 forecast-info">
-              <div class="col">Tuesday</div>
-              <div class="col">
-                <img
-                  src="images/sun-icon.png"
-                  class="sunny-icon"
-                  alt="sunshine"
-                />
+          <div class="card calendar-card">
+            <div class="card-body">
+              <div class="row row-cols-3 forecast-info">
+                <div class="col">Tuesday</div>
+                <div class="col">
+                  <img
+                    src="images/sun-icon.png"
+                    class="sunny-icon"
+                    alt="sunshine"
+                  />
+                </div>
+                <div class="col">
+                  <span class="high">H:19</span> <span class="low"> - L:7</span>
+                </div>
               </div>
-              <div class="col">H:19 - L:7</div>
-            </div>
-            <div class="row row-cols-3 forecast-info">
-              <div class="col">Wednesday</div>
-              <div class="col">
-                <img
-                  src="images/sun-cloud-icon.png"
-                  class="sun-cloud-icon"
-                  alt="sun with clouds"
-                />
+              <div class="row row-cols-3 forecast-info">
+                <div class="col">Wednesday</div>
+                <div class="col">
+                  <img
+                    src="images/sun-cloud-icon.png"
+                    class="sun-cloud-icon"
+                    alt="sun with clouds"
+                  />
+                </div>
+                <div class="col">
+                  <span class="high">H:19</span> <span class="low"> - L:7</span>
+                </div>
               </div>
-              <div class="col">H:15 - L:5</div>
-            </div>
-            <div class="row row-cols-3 forecast-info">
-              <div class="col">Thursday</div>
-              <div class="col">
-                <img
-                  src="images/sun-cloud-icon.png"
-                  class="sun-cloud-icon"
-                  alt="sun withand clouds"
-                />
+              <div class="row row-cols-3 forecast-info">
+                <div class="col">Thursday</div>
+                <div class="col">
+                  <img
+                    src="images/sun-cloud-icon.png"
+                    class="sun-cloud-icon"
+                    alt="sun withand clouds"
+                  />
+                </div>
+                <div class="col">
+                  <span class="high">H:19</span> <span class="low"> - L:7</span>
+                </div>
               </div>
-              <div class="col">H:14 - L:5</div>
-            </div>
-            <div class="row row-cols-3 forecast-info">
-              <div class="col">Friday</div>
-              <div class="col">
-                <img
-                  src="images/cloud-rain-icon.png"
-                  class="cloud-rain-icon"
-                  alt="clouds and rain"
-                />
+              <div class="row row-cols-3 forecast-info">
+                <div class="col">Friday</div>
+                <div class="col">
+                  <img
+                    src="images/cloud-rain-icon.png"
+                    class="cloud-rain-icon"
+                    alt="clouds and rain"
+                  />
+                </div>
+                <div class="col">
+                  <span class="high">H:19</span> <span class="low"> - L:7</span>
+                </div>
               </div>
-              <div class="col">H:10 - L:4</div>
-            </div>
-            <div class="row row-cols-3 forecast-info">
-              <div class="col">Saturday</div>
-              <div class="col">
-                <img
-                  src="images/rain-lightning-icon.jpg"
-                  class="rain-lightning-icon"
-                  alt="rain and lightning"
-                />
+              <div class="row row-cols-3 forecast-info">
+                <div class="col">Saturday</div>
+                <div class="col">
+                  <img
+                    src="images/rain-lightning-icon.jpg"
+                    class="rain-lightning-icon"
+                    alt="rain and lightning"
+                  />
+                </div>
+                <div class="col">
+                  <span class="high">H:19</span> <span class="low"> - L:7</span>
+                </div>
               </div>
-              <div class="col">H:12 - L:5</div>
             </div>
           </div>
+          <footer>
+            <a href="https://github.com/Seo-Pt/weather-app" target="_blank"
+              >Open-source code</a
+            >
+            by Seonah Nathali
+          </footer>
         </div>
-        <footer><a href="https://github.com/Seo-Pt/weather-app" target="_blank">Open-source code</a> by Seonah Nathali</footer>
-      </div>
       </div>
     </div>
     <script src="src/script.js"></script>

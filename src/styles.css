@@ -3,31 +3,23 @@ body {
 }
 h1,
 h2,
-h5,
-h6 {
+h5 {
   padding: none;
-  text-align: center;
-  display: inline-block;
-  margin-right: auto;
+  text-align: left;
+  display: block;
+  margin-left: 0 auto;
 }
 
 h1 {
   font-size: 60px;
   line-height: 70px;
+  margin-bottom: 0;
 }
 
 h2 {
   font-size: 50px;
-  line-height: 50px;
 }
 
-h5 {
-  font-size: 15px;
-}
-
-h6 {
-  font-size: 25px;
-}
 input {
   border-radius: 10px;
   display: inline-block;
@@ -49,9 +41,26 @@ button {
 footer {
   display: block;
   font-size: 20px;
-  font-style: italic;
   margin: auto;
   text-align: center;
+}
+
+.date-display {
+  font-size: 25px;
+}
+
+.time-display {
+  font-size: 25px;
+}
+
+.sub-weather {
+  font-size: 20px;
+}
+.high-low-display {
+  font-size: 20px;
+}
+.high {
+  font-weight: 600;
 }
 .main-card {
   background-image: linear-gradient(

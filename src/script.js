@@ -78,9 +78,9 @@ form.addEventListener("submit", citySearch);
 function showTemp(fetchedTemp) {
   let h1 = document.querySelector("#current-city");
   h1.innerHTML = `${fetchedTemp.data.name}`;
-  let citySearchTemp = Math.round(fetchedTemp.data.main.temp);
+  tempC = Math.round(fetchedTemp.data.main.temp);
   let currentTempElement = document.querySelector("#current-temp");
-  currentTempElement.innerHTML = `${citySearchTemp}°C`;
+  currentTempElement.innerHTML = `${tempC}°C`;
 
   let citySearchMax = Math.round(fetchedTemp.data.main.temp_max);
   let currentMaxElement = document.querySelector("#current-max");
@@ -152,25 +152,20 @@ currentLocButton.addEventListener("click", getCurrentPosition);
 // Fake data degC and degF conversions
 
 function showFahrenheit() {
-  let defaultTemp = 17;
-  let tempF = defaultTemp * 1.8 + 32;
-  tempF = Math.round(tempF);
-  let updatedTemp = document.querySelector("#current-temp");
-  updatedTemp.innerHTML = `${tempF}°F`;
+  let currentTempElement = document.querySelector("#current-temp");
+  let tempF = Math.round(tempC * 1.8 + 32);
+  currentTempElement.innerHTML = `${tempF}°F`;
 }
 
 let degFButton = document.querySelector("#deg-f-button");
 degFButton.addEventListener("click", showFahrenheit);
 
 function showCelsius() {
-  let defaultTemp = 17;
-  let tempF = defaultTemp * 1.8 + 32;
-  tempF = Math.round(tempF);
-  let tempC = (tempF - 32) / 1.8;
-  tempC = Math.round(tempC);
-  let updatedTemp = document.querySelector("#current-temp");
-  updatedTemp.innerHTML = `${tempC}°C`;
+  let currentTempElement = document.querySelector("#current-temp");
+  currentTempElement.innerHTML = `${tempC}°C`;
 }
 
 let degCButton = document.querySelector("#deg-c-button");
 degCButton.addEventListener("click", showCelsius);
+
+let tempC = null;

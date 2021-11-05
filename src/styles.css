@@ -21,21 +21,29 @@ h2 {
 }
 
 input {
+  border-color: #000000;
   border-radius: 10px;
   display: inline-block;
   font-size: 15px;
+  height: 30px;
   margin-right: auto;
   margin-top: 15px;
   text-align: left;
+  width: 150px;
+  padding: 4px;
+  line-height: 25px;
 }
 
 button {
+  border-color: #000000;
   border-radius: 10px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
   display: inline-block;
-  font-size: 20px;
+  font-size: 18px;
+  margin-top: 5px;
   margin-right: auto;
   text-align: center;
+  line-height: 25px;
 }
 
 footer {
@@ -45,12 +53,28 @@ footer {
   text-align: center;
 }
 
+.main-card {
+  background: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
+  border: 2px solid #000000;
+  display: block;
+  margin: 0 auto;
+  top: 20px;
+  max-width: 650px;
+  padding: 6px;
+}
+
+.card-body {
+  padding: 15px 10px 0px 10px;
+}
 .date-display {
   font-size: 25px;
+  text-align: right;
 }
 
 .time-display {
   font-size: 25px;
+  margin-top: -10px;
+  text-align: right;
 }
 
 .sub-weather {
@@ -62,37 +86,19 @@ footer {
 .high {
   font-weight: 600;
 }
-.main-card {
-  background-image: linear-gradient(
-    102.7deg,
-    rgba(253, 218, 255, 1) 8.2%,
-    rgba(223, 173, 252, 1) 19.6%,
-    rgba(173, 205, 252, 1) 36.8%,
-    rgba(173, 252, 244, 1) 73.2%,
-    rgba(202, 248, 208, 1) 90.9%
-  );
-  border: 2px solid;
-  display: block;
-  margin: 0 auto;
-  max-width: 50%;
-  padding: 5px;
-}
 
+.unit-button {
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
 .calendar-card {
-  background-image: linear-gradient(
-    102.7deg,
-    rgba(253, 218, 255, 1) 8.2%,
-    rgba(223, 173, 252, 1) 19.6%,
-    rgba(173, 205, 252, 1) 36.8%,
-    rgba(173, 252, 244, 1) 73.2%,
-    rgba(202, 248, 208, 1) 90.9%
-  );
-  border: 2px solid black;
+  background: transparent;
+  border: none;
   display: block;
   margin: 0 auto;
+  top: -90px;
   max-width: 85%;
   text-align: center;
-  top: -50px;
 }
 
 .feat-icon-card {
@@ -100,13 +106,13 @@ footer {
   border: none;
   display: block;
   margin: auto;
-  top: -60px;
+  top: -130px;
   width: fit-content;
 }
 
 .feat-icon {
   display: block;
-  width: 200px;
+  width: 180px;
 }
 
 .forecast-info {
@@ -127,4 +133,25 @@ footer {
 
 .rain-lightning-icon {
   width: 50px;
+}
+.submit {
+  display: inline-block;
+  margin: 0 auto;
+  padding: 1px 2px;
+  font-size: 15px;
+  margin-top: 5px;
+  margin-right: auto;
+  margin-left: 2px;
+  text-align: center;
+}
+
+.no-wrap {
+  white-space: pre-wrap;
+  overflow-wrap: normal;
+}
+
+#description {
+  text-align: center;
+  text-transform: capitalize;
+  font-size: 25px;
 }

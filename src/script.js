@@ -90,6 +90,17 @@ function showTemp(fetchedTemp) {
   let currentMinElement = document.querySelector("#current-min");
   currentMinElement.innerHTML = `${citySearchMin}`;
 
+  let weatherIcon = fetchedTemp.data.weather[0].icon;
+  let weatherIconElement = document.querySelector("#feat-icon");
+  weatherIconElement.setAttribute(
+    `src`,
+    `http://openweathermap.org/img/wn/${weatherIcon}@2x.png`
+  );
+
+  let weatherDesc = fetchedTemp.data.weather[0].description;
+  let weatherDescElement = document.querySelector("#description");
+  weatherDescElement.innerHTML = `${weatherDesc}`;
+
   let citySearchHumidity = Math.round(fetchedTemp.data.main.humidity);
   let citySearchHumidityElement = document.querySelector("#humidity");
   citySearchHumidityElement.innerHTML = `Humidity: ${citySearchHumidity}%`;
@@ -98,9 +109,22 @@ function showTemp(fetchedTemp) {
   let citySearchWindSpeedElement = document.querySelector("#wind-speed");
   citySearchWindSpeedElement.innerHTML = `Wind: ${citySearchWindSpeed}km/h`;
 
+  let searchInput = document.querySelector("#city-search");
+  if (searchInput.value.length <= 8) {
+    document.getElementsByClassName("city-name")[0].style.fontSize = "60px";
+  } else {
+    document.getElementsByClassName("city-name")[0].style.fontSize = "40px";
+  }
+
   let localCityName = fetchedTemp.data.name;
   let localCityElement = document.querySelector("#current-city");
   localCityElement.innerHTML = `${localCityName}`;
+
+  if (localCityName.length <= 8) {
+    document.getElementsByClassName("city-name")[0].style.fontSize = "60px";
+  } else {
+    document.getElementsByClassName("city-name")[0].style.fontSize = "40px";
+  }
 
   let localCityTemp = Math.round(fetchedTemp.data.main.temp);
   let localCityTempElement = document.querySelector("#current-temp");

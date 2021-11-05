@@ -18,6 +18,7 @@ h1 {
 
 h2 {
   font-size: 50px;
+  margin-bottom: 0;
 }
 
 input {
@@ -80,9 +81,7 @@ footer {
 .sub-weather {
   font-size: 20px;
 }
-.high-low-display {
-  font-size: 20px;
-}
+
 .high {
   font-weight: 600;
 }
@@ -91,14 +90,10 @@ footer {
   margin-bottom: 5px;
   margin-top: 5px;
 }
-.calendar-card {
-  background: transparent;
-  border: none;
-  display: block;
-  margin: 0 auto;
-  top: -90px;
-  max-width: 85%;
-  text-align: center;
+
+.inactive {
+  background-color: #6d6a6a;
+  pointer-events: none;
 }
 
 .feat-icon-card {
@@ -114,10 +109,20 @@ footer {
   display: block;
   width: 180px;
 }
+.calendar-card {
+  background: transparent;
+  border: none;
+  display: block;
+  margin: 0 auto;
+  top: -90px;
+  max-width: 85%;
+  text-align: center;
+}
 
-.forecast-info {
-  font-size: 20px;
+.forecast-title {
+  font-size: 30px;
   height: 60px;
+  text-decoration: underline;
 }
 .sunny-icon {
   width: 40px;

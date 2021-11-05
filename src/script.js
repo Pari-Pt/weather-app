@@ -76,19 +76,12 @@ form.addEventListener("submit", citySearch);
 //Display local city name when geolocation used
 
 function showTemp(fetchedTemp) {
+  console.log(fetchedTemp);
   let h1 = document.querySelector("#current-city");
   h1.innerHTML = `${fetchedTemp.data.name}`;
   tempC = Math.round(fetchedTemp.data.main.temp);
   let currentTempElement = document.querySelector("#current-temp");
   currentTempElement.innerHTML = `${tempC}°C`;
-
-  let citySearchMax = Math.round(fetchedTemp.data.main.temp_max);
-  let currentMaxElement = document.querySelector("#current-max");
-  currentMaxElement.innerHTML = `${citySearchMax}`;
-
-  let citySearchMin = Math.round(fetchedTemp.data.main.temp_min);
-  let currentMinElement = document.querySelector("#current-min");
-  currentMinElement.innerHTML = `${citySearchMin}`;
 
   let weatherIcon = fetchedTemp.data.weather[0].icon;
   let weatherIconElement = document.querySelector("#feat-icon");
@@ -155,6 +148,8 @@ function showFahrenheit() {
   let currentTempElement = document.querySelector("#current-temp");
   let tempF = Math.round(tempC * 1.8 + 32);
   currentTempElement.innerHTML = `${tempF}°F`;
+  degFButton.classList.add("inactive");
+  degCButton.classList.remove("inactive");
 }
 
 let degFButton = document.querySelector("#deg-f-button");
@@ -163,6 +158,8 @@ degFButton.addEventListener("click", showFahrenheit);
 function showCelsius() {
   let currentTempElement = document.querySelector("#current-temp");
   currentTempElement.innerHTML = `${tempC}°C`;
+  degCButton.classList.add("inactive");
+  degFButton.classList.remove("inactive");
 }
 
 let degCButton = document.querySelector("#deg-c-button");

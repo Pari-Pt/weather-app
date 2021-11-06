@@ -76,12 +76,33 @@ form.addEventListener("submit", citySearch);
 //Display local city name when geolocation used
 
 function showTemp(fetchedTemp) {
-  console.log(fetchedTemp);
   let h1 = document.querySelector("#current-city");
   h1.innerHTML = `${fetchedTemp.data.name}`;
+
+  let searchInput = document.querySelector("#city-search");
+  if (searchInput.value.length <= 8) {
+    document.getElementsByClassName("city-name")[0].style.fontSize = "60px";
+  } else {
+    document.getElementsByClassName("city-name")[0].style.fontSize = "40px";
+  }
+
+  let localCityName = fetchedTemp.data.name;
+  let localCityElement = document.querySelector("#current-city");
+  localCityElement.innerHTML = `${localCityName}`;
+
+  if (localCityName.length <= 8) {
+    document.getElementsByClassName("city-name")[0].style.fontSize = "60px";
+  } else {
+    document.getElementsByClassName("city-name")[0].style.fontSize = "40px";
+  }
+
   tempC = Math.round(fetchedTemp.data.main.temp);
   let currentTempElement = document.querySelector("#current-temp");
   currentTempElement.innerHTML = `${tempC}°C`;
+
+  let geolocateCityTemp = Math.round(fetchedTemp.data.main.temp);
+  let geolocateCityTempElement = document.querySelector("#current-temp");
+  geolocateCityTempElement.innerHTML = `${geolocateCityTemp}°C`;
 
   let weatherIcon = fetchedTemp.data.weather[0].icon;
   let weatherIconElement = document.querySelector("#feat-icon");
@@ -102,26 +123,48 @@ function showTemp(fetchedTemp) {
   let citySearchWindSpeedElement = document.querySelector("#wind-speed");
   citySearchWindSpeedElement.innerHTML = `Wind: ${citySearchWindSpeed}km/h`;
 
-  let searchInput = document.querySelector("#city-search");
-  if (searchInput.value.length <= 8) {
-    document.getElementsByClassName("city-name")[0].style.fontSize = "60px";
-  } else {
-    document.getElementsByClassName("city-name")[0].style.fontSize = "40px";
+  let sunsetTime = fetchedTemp.data.sys.sunset * 1000;
+  displaySunset(sunsetTime);
+
+  convertTimezone(fetchedTemp.data.timezone * 1000);
+}
+
+//Timezone change
+function convertTimezone(timezone) {
+  let cityTimezone = new Date(new Date().getTime() + timezone);
+  hours = cityTimezone.getHours();
+  minutes = cityTimezone.getMinutes();
+  if (hours < 10) {
+    hours = `0${hours}`;
   }
 
-  let localCityName = fetchedTemp.data.name;
-  let localCityElement = document.querySelector("#current-city");
-  localCityElement.innerHTML = `${localCityName}`;
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+  day = days[cityTimezone.getDay()];
+  date = cityTimezone.getDate();
+  month = months[cityTimezone.getMonth()];
+  let convertedDate = document.querySelector("#current-date");
+  convertedDate.innerHTML = `${day}, ${date} ${month}`;
 
-  if (localCityName.length <= 8) {
-    document.getElementsByClassName("city-name")[0].style.fontSize = "60px";
-  } else {
-    document.getElementsByClassName("city-name")[0].style.fontSize = "40px";
+  let cityTimezoneElement = document.querySelector("#current-time");
+  cityTimezoneElement.innerHTML = `${hours}:${minutes}`;
+}
+
+//Sunset
+function displaySunset(timestamp) {
+  let citySunset = new Date(timestamp);
+  hours = citySunset.getHours();
+  minutes = citySunset.getMinutes();
+  if (hours < 10) {
+    hours = `0${hours}`;
   }
 
-  let localCityTemp = Math.round(fetchedTemp.data.main.temp);
-  let localCityTempElement = document.querySelector("#current-temp");
-  localCityTempElement.innerHTML = `${localCityTemp}°C`;
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+  let citySunsetElement = document.querySelector("#sunset-time");
+  citySunsetElement.innerHTML = `Sunset: ${hours}:${minutes}`;
 }
 
 //Retrieve current position coordinates
@@ -142,7 +185,7 @@ function retrievePosition(position) {
 let currentLocButton = document.querySelector("#locator-button");
 currentLocButton.addEventListener("click", getCurrentPosition);
 
-// Fake data degC and degF conversions
+// Real data degC and degF conversions with button activity triggers
 
 function showFahrenheit() {
   let currentTempElement = document.querySelector("#current-temp");

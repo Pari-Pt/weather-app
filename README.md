@@ -11,16 +11,16 @@
    Temperature
   </li>
   <li>
-   Maximum(High) and Minimum(Low) Temperatures
+   Current Date and Time
   </li>
   <li>
-   Current Date and Time
+   Humidity %
   </li>
   <li>
    Wind Speed in km/h
   </li>
   <li>
-   Humidity %
+   Sunset time
   </li>
   <li>
    A 5 day weather forecast
@@ -29,7 +29,7 @@
    Several icons to illustrate the weather situation
   </li>
   <li>
-   A simple sentence regarding the weather situation e.g. "It's a chilly day!".
+   A description regarding the weather situation e.g. "Clear Sky".
   </li>
   </ul>
   </p>
@@ -56,13 +56,14 @@ If no characters are submitted into the search engine, an alert will be displaye
 <br>
 If the city in which the user submitted is not found, the display will not change.
 </p>
+<div> <em> Currently there are a set of functions working to produce the accurate time for the searched city based on timezone calculations. This is currently undergoing testing and may not be present in the final version of this Application </em> </div>
  
 <h4>"Current Location" button</h4>
  <p>The "Current Location" button, when pressed, will request permission for the user's location. In order for this facility, the user needs to grant permission. Once granted, Geolocation is used to pinpoint the coordinates (longitude and latitude) of the user's device. This information is then fed into a API call, which in turn responds with and displays the current weather data for the city associated with those coordinates. 
  </p>
 
  <h4>Units</h4>
- <p>The Application displays the weather data in metric units (°C for temperature and km/h for wind speed). However, if the user prefers, it is to display temperatures in °F by pressing the "°F" button. Temperatures can be returned to metric by pressing the "°C" button.</p>
+ <p>The Application displays the weather data in metric units (°C for temperature and km/h for wind speed). However, if the user prefers, it is possible to display temperatures in °F by pressing the "°F" button. Temperatures can be returned to metric by pressing the "°C" button. The button corresponding to the equipped unit shall appear darker with no pointer appearing during hover. When the other unit button is pressed, the reverse shall occur.</p>
 
 <h3>Built with</h3>
 <p>This Application was built with the following technologies:
@@ -90,7 +91,7 @@ If the city in which the user submitted is not found, the display will not chang
 <div>[] React JS implementation</div>
 
 <h3>About the Programmer - Seonah Nathali</h3>
-<p>Seonah Nathali is an up-and-coming front-end web developer studying at SheCodes. Keen to develop and demonstrate her skills,  enrolled on the Pro course, and is developing her skills in preparation for a career-change. Previously a forensic scientist and crime investigator, she has a multitude of transferable skills which, combined with her passion for programming would be an asset to any team or organisation.
+<p>Seonah Nathali is an up-and-coming front-end web developer studying Pro at SheCodes. Keen to develop and demonstrate her skills, she is developing her skills in preparation for a career-change. Previously a forensic scientist and crime investigator, she has a multitude of transferable skills which, combined with her passion for programming would be an asset to any team or organisation.
  <br>
 GitHub: https://github.com/Seo-Pt/
  <br>

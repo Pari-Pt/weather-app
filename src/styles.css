@@ -55,13 +55,25 @@ footer {
 }
 
 .main-card {
-  background: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
   border: 2px solid #000000;
   display: block;
   margin: 0 auto;
   top: 20px;
   max-width: 650px;
   padding: 6px;
+}
+
+.day-time {
+  background: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
+}
+
+.night-time {
+  background: radial-gradient(
+    circle at 1.8% 4.8%,
+    rgb(17, 23, 58) 0%,
+    rgb(58, 85, 148) 90%
+  );
+  color: #eceed5;
 }
 
 .card-body {

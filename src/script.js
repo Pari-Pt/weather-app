@@ -114,6 +114,7 @@ function showTemp(fetchedTemp) {
   let weatherDesc = fetchedTemp.data.weather[0].description;
   let weatherDescElement = document.querySelector("#description");
   weatherDescElement.innerHTML = `${weatherDesc}`;
+  weatherIconElement.setAttribute(`alt`, `${weatherDesc}`);
 
   let citySearchHumidity = Math.round(fetchedTemp.data.main.humidity);
   let citySearchHumidityElement = document.querySelector("#humidity");
@@ -123,17 +124,22 @@ function showTemp(fetchedTemp) {
   let citySearchWindSpeedElement = document.querySelector("#wind-speed");
   citySearchWindSpeedElement.innerHTML = `Wind: ${citySearchWindSpeed}km/h`;
 
-  let sunsetTime = fetchedTemp.data.sys.sunset * 1000;
-  displaySunset(sunsetTime);
+  degCButton.classList.add("inactive");
+  degFButton.classList.remove("inactive");
+
+  displaySunset(fetchedTemp.data.sys.sunset * 1000);
 
   convertTimezone(fetchedTemp.data.timezone * 1000);
+
+  changeBackground(fetchedTemp.data.weather[0].icon);
 }
 
 //Timezone change
+
 function convertTimezone(timezone) {
   let cityTimezone = new Date(new Date().getTime() + timezone);
-  hours = cityTimezone.getHours();
-  minutes = cityTimezone.getMinutes();
+  let hours = cityTimezone.getHours();
+  let minutes = cityTimezone.getMinutes();
   if (hours < 10) {
     hours = `0${hours}`;
   }
@@ -152,6 +158,7 @@ function convertTimezone(timezone) {
 }
 
 //Sunset
+
 function displaySunset(timestamp) {
   let citySunset = new Date(timestamp);
   hours = citySunset.getHours();
@@ -164,7 +171,19 @@ function displaySunset(timestamp) {
     minutes = `0${minutes}`;
   }
   let citySunsetElement = document.querySelector("#sunset-time");
-  citySunsetElement.innerHTML = `Sunset: ${hours}:${minutes}`;
+  citySunsetElement.innerHTML = `Sunset: ${hours}:${minutes} UTC`;
+}
+//Function to change background colour scheme depending on if the icon code contains "d" or "n"
+function changeBackground(code) {
+  let background = document.querySelector(".main-card");
+
+  if (code.includes("n")) {
+    background.classList.remove("day-time");
+    background.classList.add("night-time");
+  } else {
+    background.classList.remove("night-time");
+    background.classList.add("day-time");
+  }
 }
 
 //Retrieve current position coordinates
@@ -178,6 +197,9 @@ function retrievePosition(position) {
   let units = "metric";
   let apiKey = "ea283403784bc63466a22fcf17ab8227";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=${units}`;
+
+  degCButton.classList.add("inactive");
+  degFButton.classList.remove("inactive");
 
   axios.get(apiUrl).then(showTemp);
 }

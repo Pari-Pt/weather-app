@@ -63,19 +63,6 @@ footer {
   padding: 6px;
 }
 
-.day-time {
-  background: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
-}
-
-.night-time {
-  background: radial-gradient(
-    circle at 1.8% 4.8%,
-    rgb(17, 23, 58) 0%,
-    rgb(58, 85, 148) 90%
-  );
-  color: #eceed5;
-}
-
 .card-body {
   padding: 15px 10px 0px 10px;
 }
@@ -181,10 +168,23 @@ footer {
 }
 
 .forecast-description {
-  color: red;
+  color: rgb(33, 37, 41);
   font-size: 15px;
   text-transform: capitalize;
   overflow-wrap: normal;
+}
+
+.day-time {
+  background: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
+}
+
+.night-time {
+  background: radial-gradient(
+    circle at 1.8% 4.8%,
+    rgb(17, 23, 58) 0%,
+    rgb(58, 85, 148) 90%
+  );
+  color: #eceed5;
 }
 #current-description {
   text-align: center;
@@ -192,4 +192,8 @@ footer {
   font-size: 25px;
   position: relative;
   top: -15px;
+}
+
+#forecast-icon {
+  background: blue;
 }

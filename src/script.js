@@ -127,11 +127,11 @@ function showTemp(fetchedTemp) {
   degCButton.classList.add("inactive");
   degFButton.classList.remove("inactive");
 
+  changeBackground(fetchedTemp.data.weather[0].icon);
+
   displaySunset(fetchedTemp.data.sys.sunset * 1000);
 
   convertTimezone(fetchedTemp.data.timezone * 1000);
-
-  changeBackground(fetchedTemp.data.weather[0].icon);
 
   getForecast(fetchedTemp.data.coord);
 }
@@ -148,73 +148,22 @@ function changeBackground(code) {
     background.classList.add("day-time");
   }
 }
-//Fetch Forecast Data
-function getForecast(coordinates) {
-  let apiKey = "ea283403784bc63466a22fcf17ab8227";
-  let exclusions = "minutely,hourly,alerts";
-  let forecastApiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&exclude=${exclusions}&appid=${apiKey}&units=metric`;
 
-  axios.get(forecastApiUrl).then(displayForecast);
-}
+//Sunset
 
-//Format Forecast Day
+function displaySunset(timestamp) {
+  let citySunset = new Date(timestamp);
+  hours = citySunset.getHours();
+  minutes = citySunset.getMinutes();
+  if (hours < 10) {
+    hours = `0${hours}`;
+  }
 
-function formatForecastDate(timestamp) {
-  //console.log(timestamp);
-  let date = new Date(timestamp * 1000);
-  let day = date.getDay();
-  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-  return days[day];
-}
-//Display Forecast Data
-
-function displayForecast(response) {
-  console.log(response.data.daily);
-  let forecast = response.data.daily;
-  let forecastElement = document.querySelector("#forecast");
-  let forecastHTML = "";
-
-  forecast.forEach(function (forecastDay, index) {
-    if (index < 5) {
-      forecastHTML =
-        forecastHTML +
-        `<div class="row row-cols-4 forecast-info border-bottom align-items-center">
-          <div class="col">${formatForecastDate(forecastDay.dt)}</div>
-           <div class="col" id="forecast-icon">
-            <img src="https://openweathermap.org/img/wn/${
-              forecastDay.weather[0].icon
-            }@2x.png" class="sunny-icon" alt="${
-          forecastDay.weather[0].description
-        }"
-                  />
-          </div>
-          <div class="col forecast-description">
-        ${forecastDay.weather[0].description}
-        </div>
-        <div class="col">
-        <span class="max-temp"><sub>H &nbsp</sub>${Math.round(
-          forecastDay.temp.max
-        )}</span>
-        
-        <span class="min-temp">${Math.round(
-          forecastDay.temp.min
-        )}<sub>&nbsp L</sub></span>
-          </div>
-        
-        </div>
-        `;
-    }
-    //if (descriptionLength.length >= 9) {
-    //document.getElementsByClassName(
-    //"forecast-description"
-    //)[0].style.fontSize = "10px";
-    //}
-  });
-  forecastElement.innerHTML = forecastHTML;
-
-  //let days = ["Sun", "Mon", "Tues", "Wed", "Thu", "Fri", "Sat"];
-
-  //forecast.forEach(function (forecastDay, index) {});
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+  let citySunsetElement = document.querySelector("#sunset-time");
+  citySunsetElement.innerHTML = `Sunset: ${hours}:${minutes} UTC`;
 }
 
 //Timezone change
@@ -240,21 +189,65 @@ function convertTimezone(timezone) {
   cityTimezoneElement.innerHTML = `${hours}:${minutes}`;
 }
 
-//Sunset
+//Fetch Forecast Data
+function getForecast(coordinates) {
+  let apiKey = "ea283403784bc63466a22fcf17ab8227";
+  let exclusions = "minutely,hourly,alerts";
+  forecastApiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&exclude=${exclusions}&appid=${apiKey}&units=metric`;
 
-function displaySunset(timestamp) {
-  let citySunset = new Date(timestamp);
-  hours = citySunset.getHours();
-  minutes = citySunset.getMinutes();
-  if (hours < 10) {
-    hours = `0${hours}`;
-  }
+  axios.get(forecastApiUrl).then(displayForecast);
+}
 
-  if (minutes < 10) {
-    minutes = `0${minutes}`;
-  }
-  let citySunsetElement = document.querySelector("#sunset-time");
-  citySunsetElement.innerHTML = `Sunset: ${hours}:${minutes} UTC`;
+//Display Forecast Data
+
+function displayForecast(response) {
+  //console.log(response.data.daily[0].temp.max);
+
+  forecast = response.data.daily;
+  let forecastElement = document.querySelector("#forecast");
+  let forecastHTML = "";
+
+  forecast.forEach(function (forecastDay, index) {
+    if (index > 0 && index < 6) {
+      maxTempC = Math.round(forecastDay.temp.max);
+      minTempC = Math.round(forecastDay.temp.min);
+      forecastHTML =
+        forecastHTML +
+        `<div class="row row-cols-4 forecast-info border-bottom align-items-center">
+          <div class="col">${formatForecastDate(forecastDay.dt)}</div>
+           <div class="col" id="forecast-icon">
+            <img src="https://openweathermap.org/img/wn/${
+              forecastDay.weather[0].icon
+            }@2x.png" class="sunny-icon" alt="${
+          forecastDay.weather[0].description
+        }"/>
+          </div>
+          <div class="col forecast-description">
+        ${forecastDay.weather[0].description}
+        </div>
+        <div class="col">
+        
+        <span class="max-temp"><sub>H &nbsp</sub>${maxTempC}</span>
+        <span>-</span>
+        <span class="min-temp">${minTempC}<sub>&nbsp L</sub></span>
+          </div>
+        
+        </div>
+        `;
+    }
+  });
+
+  forecastElement.innerHTML = forecastHTML;
+}
+
+//Format Forecast Day
+
+function formatForecastDate(timestamp) {
+  //console.log(timestamp);
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  return days[day];
 }
 
 //Retrieve current position coordinates
@@ -281,11 +274,53 @@ currentLocButton.addEventListener("click", getCurrentPosition);
 // Real data degC and degF conversions with button activity triggers
 
 function showFahrenheit() {
+  degFButton.classList.add("inactive");
+  degCButton.classList.remove("inactive");
   let currentTempElement = document.querySelector("#current-temp");
   let tempF = Math.round(tempC * 1.8 + 32);
   currentTempElement.innerHTML = `${tempF}°F`;
-  degFButton.classList.add("inactive");
-  degCButton.classList.remove("inactive");
+
+  convertForecastFahrenheit();
+}
+
+function convertForecastFahrenheit() {
+  let forecastElement = document.querySelector("#forecast");
+  let forecastHTML = "";
+
+  forecast.forEach(function (forecastDay, index) {
+    if (index > 0 && index < 6) {
+      maxTempC = Math.round(forecastDay.temp.max);
+      minTempC = Math.round(forecastDay.temp.min);
+      maxTempF = Math.round(maxTempC * 1.8 + 32);
+      minTempF = Math.round(minTempC * 1.8 + 32);
+      //minTempC = Math.round(forecastDay.temp.min);
+      forecastHTML =
+        forecastHTML +
+        `<div class="row row-cols-4 forecast-info border-bottom align-items-center">
+          <div class="col">${formatForecastDate(forecastDay.dt)}</div>
+           <div class="col" id="forecast-icon">
+            <img src="https://openweathermap.org/img/wn/${
+              forecastDay.weather[0].icon
+            }@2x.png" class="sunny-icon" alt="${
+          forecastDay.weather[0].description
+        }"/>
+          </div>
+          <div class="col forecast-description">
+        ${forecastDay.weather[0].description}
+        </div>
+        <div class="col">
+        
+        <span class="max-temp">${maxTempF}</span>
+        <span>-</span>
+        <span class="min-temp">${minTempF}<sub>&nbsp L</sub></span>
+          </div>
+        
+        </div>
+        `;
+    }
+  });
+
+  forecastElement.innerHTML = forecastHTML;
 }
 
 let degFButton = document.querySelector("#deg-f-button");
@@ -296,9 +331,17 @@ function showCelsius() {
   currentTempElement.innerHTML = `${tempC}°C`;
   degCButton.classList.add("inactive");
   degFButton.classList.remove("inactive");
+
+  axios.get(forecastApiUrl).then(displayForecast);
 }
 
 let degCButton = document.querySelector("#deg-c-button");
 degCButton.addEventListener("click", showCelsius);
 
+let forecastApiUrl = null;
 let tempC = null;
+let maxTempC = null;
+let minTempC = null;
+let maxTempF = null;
+let minTempF = null;
+let forecast = null;

@@ -108,11 +108,11 @@ function showTemp(fetchedTemp) {
   let weatherIconElement = document.querySelector("#feat-icon");
   weatherIconElement.setAttribute(
     `src`,
-    `http://openweathermap.org/img/wn/${weatherIcon}@2x.png`
+    `https://openweathermap.org/img/wn/${weatherIcon}@2x.png`
   );
 
   let weatherDesc = fetchedTemp.data.weather[0].description;
-  let weatherDescElement = document.querySelector("#description");
+  let weatherDescElement = document.querySelector("#current-description");
   weatherDescElement.innerHTML = `${weatherDesc}`;
   weatherIconElement.setAttribute(`alt`, `${weatherDesc}`);
 
@@ -132,6 +132,89 @@ function showTemp(fetchedTemp) {
   convertTimezone(fetchedTemp.data.timezone * 1000);
 
   changeBackground(fetchedTemp.data.weather[0].icon);
+
+  getForecast(fetchedTemp.data.coord);
+}
+
+//Function to change background colour scheme depending on if the icon code contains "d" or "n"
+function changeBackground(code) {
+  let background = document.querySelector(".main-card");
+
+  if (code.includes("n")) {
+    background.classList.remove("day-time");
+    background.classList.add("night-time");
+  } else {
+    background.classList.remove("night-time");
+    background.classList.add("day-time");
+  }
+}
+//Fetch Forecast Data
+function getForecast(coordinates) {
+  let apiKey = "ea283403784bc63466a22fcf17ab8227";
+  let exclusions = "minutely,hourly,alerts";
+  let forecastApiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&exclude=${exclusions}&appid=${apiKey}&units=metric`;
+
+  axios.get(forecastApiUrl).then(displayForecast);
+}
+
+//Format Forecast Day
+
+function formatForecastDate(timestamp) {
+  //console.log(timestamp);
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  return days[day];
+}
+//Display Forecast Data
+
+function displayForecast(response) {
+  console.log(response.data.daily);
+  let forecast = response.data.daily;
+  let forecastElement = document.querySelector("#forecast");
+  let forecastHTML = "";
+
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 5) {
+      forecastHTML =
+        forecastHTML +
+        `<div class="row row-cols-4 forecast-info border-bottom align-items-center">
+          <div class="col">${formatForecastDate(forecastDay.dt)}</div>
+           <div class="col" id="forecast-icon">
+            <img src="https://openweathermap.org/img/wn/${
+              forecastDay.weather[0].icon
+            }@2x.png" class="sunny-icon" alt="${
+          forecastDay.weather[0].description
+        }"
+                  />
+          </div>
+          <div class="col forecast-description">
+        ${forecastDay.weather[0].description}
+        </div>
+        <div class="col">
+        <span class="max-temp"><sub>H &nbsp</sub>${Math.round(
+          forecastDay.temp.max
+        )}</span>
+        
+        <span class="min-temp">${Math.round(
+          forecastDay.temp.min
+        )}<sub>&nbsp L</sub></span>
+          </div>
+        
+        </div>
+        `;
+    }
+    //if (descriptionLength.length >= 9) {
+    //document.getElementsByClassName(
+    //"forecast-description"
+    //)[0].style.fontSize = "10px";
+    //}
+  });
+  forecastElement.innerHTML = forecastHTML;
+
+  //let days = ["Sun", "Mon", "Tues", "Wed", "Thu", "Fri", "Sat"];
+
+  //forecast.forEach(function (forecastDay, index) {});
 }
 
 //Timezone change
@@ -172,18 +255,6 @@ function displaySunset(timestamp) {
   }
   let citySunsetElement = document.querySelector("#sunset-time");
   citySunsetElement.innerHTML = `Sunset: ${hours}:${minutes} UTC`;
-}
-//Function to change background colour scheme depending on if the icon code contains "d" or "n"
-function changeBackground(code) {
-  let background = document.querySelector(".main-card");
-
-  if (code.includes("n")) {
-    background.classList.remove("day-time");
-    background.classList.add("night-time");
-  } else {
-    background.classList.remove("night-time");
-    background.classList.add("day-time");
-  }
 }
 
 //Retrieve current position coordinates

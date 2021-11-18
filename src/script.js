@@ -201,8 +201,6 @@ function getForecast(coordinates) {
 //Display Forecast Data
 
 function displayForecast(response) {
-  //console.log(response.data.daily[0].temp.max);
-
   forecast = response.data.daily;
   let forecastElement = document.querySelector("#forecast");
   let forecastHTML = "";
@@ -215,7 +213,7 @@ function displayForecast(response) {
         forecastHTML +
         `<div class="row row-cols-4 forecast-info border-bottom align-items-center">
           <div class="col">${formatForecastDate(forecastDay.dt)}</div>
-           <div class="col" id="forecast-icon">
+           <div class="col" id="forecast-icon-celsius">
             <img src="https://openweathermap.org/img/wn/${
               forecastDay.weather[0].icon
             }@2x.png" class="sunny-icon" alt="${
@@ -243,7 +241,6 @@ function displayForecast(response) {
 //Format Forecast Day
 
 function formatForecastDate(timestamp) {
-  //console.log(timestamp);
   let date = new Date(timestamp * 1000);
   let day = date.getDay();
   let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
@@ -298,7 +295,7 @@ function convertForecastFahrenheit() {
         forecastHTML +
         `<div class="row row-cols-4 forecast-info border-bottom align-items-center">
           <div class="col">${formatForecastDate(forecastDay.dt)}</div>
-           <div class="col" id="forecast-icon">
+           <div class="col" id="forecast-icon-fahrenheit">
             <img src="https://openweathermap.org/img/wn/${
               forecastDay.weather[0].icon
             }@2x.png" class="sunny-icon" alt="${

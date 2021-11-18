@@ -168,16 +168,26 @@ footer {
 }
 
 .forecast-description {
-  color: rgb(33, 37, 41);
   font-size: 15px;
   text-transform: capitalize;
   overflow-wrap: normal;
 }
 
 .day-time {
-  background: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
+  background: linear-gradient(
+    to top,
+    #fff1eb -20%,
+    #ace0f9 30%,
+    #fff1eb 47%,
+    #ace0f9 85%
+  );
+
+  color: rgb(33, 37, 41);
 }
 
+.icon-column {
+  background: red;
+}
 .night-time {
   background: radial-gradient(
     circle at 1.8% 4.8%,
@@ -186,6 +196,7 @@ footer {
   );
   color: #eceed5;
 }
+
 #current-description {
   text-align: center;
   text-transform: capitalize;
@@ -195,5 +206,5 @@ footer {
 }
 
 #forecast-icon {
-  background: blue;
+  color: black;
 }

@@ -104,7 +104,7 @@ function showTemp(fetchedTemp) {
   let geolocateCityTempElement = document.querySelector("#current-temp");
   geolocateCityTempElement.innerHTML = `${geolocateCityTemp}°C`;
 
-  let weatherIcon = fetchedTemp.data.weather[0].icon;
+  weatherIcon = fetchedTemp.data.weather[0].icon;
   let weatherIconElement = document.querySelector("#feat-icon");
   weatherIconElement.setAttribute(
     `src`,
@@ -124,8 +124,8 @@ function showTemp(fetchedTemp) {
   let citySearchWindSpeedElement = document.querySelector("#wind-speed");
   citySearchWindSpeedElement.innerHTML = `Wind: ${citySearchWindSpeed}km/h`;
 
-  degCButton.classList.add("inactive");
-  degFButton.classList.remove("inactive");
+  //degCButton.classList.add("inactive");
+  //degFButton.classList.remove("inactive");
 
   changeBackground(fetchedTemp.data.weather[0].icon);
 
@@ -138,8 +138,6 @@ function showTemp(fetchedTemp) {
 
 //Function to change background colour scheme depending on if the icon code contains "d" or "n"
 function changeBackground(code) {
-  let background = document.querySelector(".main-card");
-
   if (code.includes("n")) {
     background.classList.remove("day-time");
     background.classList.add("night-time");
@@ -149,6 +147,44 @@ function changeBackground(code) {
   }
 }
 
+//Function to change background theme if Christmas button is clicked
+function displayChristmas() {
+  //snow display https://freefrontend.com/css-snow-effects/
+
+  {
+    if (background.classList.contains("night-time")) {
+      background.classList.replace("night-time", "christmas-mode");
+    } else {
+      background.classList.replace("day-time", "christmas-mode");
+    }
+
+    let christmasGridElement = document.querySelector(".christmas-grid");
+    let christmasGridElementHTML = `
+    <div class="row">
+    <div class="col"><img
+      src="images/christmas-tree.svg"
+      alt="Christmas Tree"
+      width="160px"
+      height="100px"
+      id="tree-1"
+    />
+    </div>
+    <div class="col">
+    <img
+      src="images/christmas-tree.svg"
+      alt="Christmas Tree"
+      width="160px"
+      height="100px"
+      id="tree-2"
+    /></div>
+    `;
+    christmasGridElement.innerHTML = christmasGridElementHTML;
+
+    alert("hello");
+  }
+}
+let christmasButton = document.querySelector("#christmas-mode-button");
+christmasButton.addEventListener("click", displayChristmas);
 //Sunset
 
 function displaySunset(timestamp) {
@@ -342,3 +378,5 @@ let minTempC = null;
 let maxTempF = null;
 let minTempF = null;
 let forecast = null;
+let background = document.querySelector(".main-card");
+let weatherIcon = null;

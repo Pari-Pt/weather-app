@@ -51,6 +51,7 @@ footer {
   display: block;
   font-size: 20px;
   margin: auto;
+  height: 30px;
   text-align: center;
 }
 
@@ -181,7 +182,7 @@ footer {
     #fff1eb 47%,
     #ace0f9 85%
   );
-
+  transition-duration: 2s;
   color: rgb(33, 37, 41);
 }
 
@@ -194,6 +195,25 @@ footer {
     rgb(17, 23, 58) 0%,
     rgb(58, 85, 148) 90%
   );
+  transition-duration: 2s;
+  color: #eceed5;
+}
+
+.christmas-button {
+  padding: 4px 2px 0px 2px;
+  font-size: 17px;
+  border-radius: 50%;
+}
+
+.christmas-mode {
+  background: linear-gradient(
+    to top,
+    #fff1eb -40%,
+    #940606 15%,
+    #940606 74%,
+    #fff1eb 140%
+  );
+  transition-duration: 2s;
   color: #eceed5;
 }
 
@@ -203,6 +223,21 @@ footer {
   font-size: 25px;
   position: relative;
   top: -15px;
+}
+
+.christmas-tree {
+  display: inline-block;
+  position: relative;
+}
+
+#tree-1 {
+  ***margin-left: -150px;
+  ***margin-bottom: -50px;
+}
+
+#tree-2 {
+  ***margin-left: -150px;
+  ***margin-bottom: -50px;
 }
 
 #forecast-icon {

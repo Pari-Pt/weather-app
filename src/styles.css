@@ -47,6 +47,10 @@ button {
   line-height: 25px;
 }
 
+.button:hover {
+  cursor: pointer;
+}
+
 footer {
   display: block;
   font-size: 20px;
@@ -200,7 +204,19 @@ footer {
   color: #eceed5;
 }
 
+.bg-theme-button {
+  padding: 3px 2px 0px 2px;
+  font-size: 17px;
+  border-radius: 50%;
+}
+
 #theme-button {
+  padding: 3px 2px 0px 2px;
+  font-size: 17px;
+  border-radius: 50%;
+}
+
+#santa-button {
   padding: 3px 2px 0px 2px;
   font-size: 17px;
   border-radius: 50%;

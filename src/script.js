@@ -149,23 +149,23 @@ function changeBackground() {
 }
 
 function displayThemeButton() {
-  //debugger;
-
+  //let themeButton = document.querySelector("#theme-button");
+  debugger;
   if (month === "Nov" || month === "Dec") {
     // debugger;
-    //?? let displayChristmasButton = document.getElementById("theme-button");
-    let displayChristmasButtonHTML = "1";
-    displayChristmasButton.innerHTML = displayChristmasButtonHTML;
-  }
-}
+    let santaButton = document.querySelector(".bg-theme-button");
+    santaButton.setAttribute("id", "santa-button");
+    santaButton = document.getElementById("santa-button");
+    let santaButtonHTML = "🎅";
+    santaButton.innerHTML = santaButtonHTML;
 
-//Function to change background theme if Christmas button is clicked
-function displayChristmas() {
-  let background = document.querySelector("#primary-card");
-  background.classList.add("christmas-mode");
+    function displayChristmas() {
+      debugger;
+      let background = document.querySelector("#primary-card");
+      background.classList.add("christmas-mode");
 
-  let themeGridElement = document.querySelector(".theme-grid");
-  let christmasGridElementHTML = `
+      let themeGridElement = document.querySelector(".theme-grid");
+      let themeGridElementHTML = `
   <div class="row">
   <div class="col"><img
       src="images/christmas-tree.svg"
@@ -185,37 +185,53 @@ function displayChristmas() {
       class="flip-horizontally"
       /></div>
       `;
-  themeGridElement.innerHTML = christmasGridElementHTML;
-  //let
-  removeChristmasButton = document.getElementById("theme-button");
-  let removeChristmasButtonHTML = "🎨";
-  removeChristmasButton.innerHTML = removeChristmasButtonHTML;
+      themeGridElement.innerHTML = themeGridElementHTML;
+      //let themeButton = document.querySelector(".bg-theme-button");
+      santaButton.setAttribute("id", "theme-button");
+      //themeButton = document
+      // .getElementById("santa-button")
+      // .setAttribute("id", "theme-button");
+      // themeButton = document.getElementById("theme-button");
+      // let themeButtonHTML = "🎨";
+      //themeButton.innerHTML = themeButtonHTML;
+      //themeButton.addEventListener("click", removeChristmas);
+      santaButtonHTML = "🎨";
+      santaButton.innerHTML = santaButtonHTML;
 
-  // redoChristmasButton.addEventListener("click", displayChristmas);
-  //let redoChristmasButtonHTML = "🌠";
-  //redoChristmasButton.innerHTML = redoChristmasButtonHTML;
-  //LEAVE
-  removeChristmasButton.addEventListener("click", removeChristmas);
+      function removeChristmas() {
+        //debugger;
+        //let background = document.querySelector("#primary-card");
+        themeGridElementHTML = "";
+        themeGridElement.innerHTML = themeGridElementHTML;
+        background.classList.remove("christmas-mode");
+
+        //let santaButton = document.querySelector(".bg-theme-button");
+        //santaButton.setAttribute("id", "santa-button");
+        santaButtonHTML = "🎅";
+        santaButton.innerHTML = santaButtonHTML;
+        displayThemeButton();
+        //santaButton.addEventListener("click", displayThemeButton);
+      }
+      santaButton.addEventListener("click", removeChristmas);
+    }
+    santaButton.addEventListener("click", displayChristmas);
+  }
 }
 
-let removeChristmasButton = null;
-
-let displayChristmasButton = document.getElementById("theme-button");
-displayChristmasButton.addEventListener("click", displayChristmas);
+//Function to change background theme if Christmas button is clicked
 
 //Function to remove Christmas theme and return to Day/Night background setting
-function removeChristmas() {
-  //debugger;
-  let background = document.querySelector("#primary-card");
-  background.classList.remove("christmas-mode");
-  themeGridElementHTML = "";
-  themeGridElement.innerHTML = themeGridElementHTML;
 
-  displayChristmasButtonHTML = "🎅";
-  displayChristmasButton = document.getElementById("theme-button");
-  displayChristmasButton.innerHTML = displayChristmasButtonHTML;
-  displayChristmasButton.addEventListener("click", displayChristmas);
-}
+//____________Here??
+//displayThemeButton();
+
+// let santaButton = document.getElementById("theme-button");
+// santaButton.setAttribute("id", "santa-button");
+
+//let santaButtonHTML = "🎅";
+//santaButton.innerHTML = santaButtonHTML;
+//santaButton.addEventListener("click", displayChristmas);
+
 //Sunset
 
 function displaySunset(timestamp) {
@@ -417,8 +433,8 @@ let weatherIcon = null;
 let forecast = null;
 
 //let background = document.querySelector(".main-card");
-let themeGridElement = document.querySelector(".theme-grid");
-let themeGridElementHTML = null;
+//let themeGridElement = document.querySelector(".theme-grid");
+//let themeGridElementHTML = null;
 
 //let removeChristmasButton = null;
 //let themeButtonHTML = null;

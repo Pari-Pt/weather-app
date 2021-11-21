@@ -126,19 +126,20 @@ function showTemp(fetchedTemp) {
 
   //degCButton.classList.add("inactive");
   //degFButton.classList.remove("inactive");
-
-  changeBackground(fetchedTemp.data.weather[0].icon);
-
   displaySunset(fetchedTemp.data.sys.sunset * 1000);
-
   convertTimezone(fetchedTemp.data.timezone * 1000);
-
   getForecast(fetchedTemp.data.coord);
+  changeBackground();
+  displayThemeButton();
 }
-
+//what();
+//function what(){
+// document.getElementById('hello').innerHTML = '<p>hi</p>';
 //Function to change background colour scheme depending on if the icon code contains "d" or "n"
-function changeBackground(code) {
-  if (code.includes("n")) {
+function changeBackground() {
+  //debugger;
+  let background = document.querySelector("#primary-card");
+  if (weatherIcon.includes("n")) {
     background.classList.remove("day-time");
     background.classList.add("night-time");
   } else {
@@ -147,44 +148,74 @@ function changeBackground(code) {
   }
 }
 
+function displayThemeButton() {
+  //debugger;
+
+  if (month === "Nov" || month === "Dec") {
+    // debugger;
+    //?? let displayChristmasButton = document.getElementById("theme-button");
+    let displayChristmasButtonHTML = "1";
+    displayChristmasButton.innerHTML = displayChristmasButtonHTML;
+  }
+}
+
 //Function to change background theme if Christmas button is clicked
 function displayChristmas() {
-  //snow display https://freefrontend.com/css-snow-effects/
+  let background = document.querySelector("#primary-card");
+  background.classList.add("christmas-mode");
 
-  {
-    if (background.classList.contains("night-time")) {
-      background.classList.replace("night-time", "christmas-mode");
-    } else {
-      background.classList.replace("day-time", "christmas-mode");
-    }
-
-    let christmasGridElement = document.querySelector(".christmas-grid");
-    let christmasGridElementHTML = `
-    <div class="row">
-    <div class="col"><img
+  let themeGridElement = document.querySelector(".theme-grid");
+  let christmasGridElementHTML = `
+  <div class="row">
+  <div class="col"><img
       src="images/christmas-tree.svg"
       alt="Christmas Tree"
       width="160px"
       height="100px"
       id="tree-1"
-    />
-    </div>
-    <div class="col">
-    <img
+      />
+      </div>
+      <div class="col">
+      <img
       src="images/christmas-tree.svg"
       alt="Christmas Tree"
       width="160px"
       height="100px"
       id="tree-2"
-    /></div>
-    `;
-    christmasGridElement.innerHTML = christmasGridElementHTML;
+      class="flip-horizontally"
+      /></div>
+      `;
+  themeGridElement.innerHTML = christmasGridElementHTML;
+  //let
+  removeChristmasButton = document.getElementById("theme-button");
+  let removeChristmasButtonHTML = "🎨";
+  removeChristmasButton.innerHTML = removeChristmasButtonHTML;
 
-    alert("hello");
-  }
+  // redoChristmasButton.addEventListener("click", displayChristmas);
+  //let redoChristmasButtonHTML = "🌠";
+  //redoChristmasButton.innerHTML = redoChristmasButtonHTML;
+  //LEAVE
+  removeChristmasButton.addEventListener("click", removeChristmas);
 }
-let christmasButton = document.querySelector("#christmas-mode-button");
-christmasButton.addEventListener("click", displayChristmas);
+
+let removeChristmasButton = null;
+
+let displayChristmasButton = document.getElementById("theme-button");
+displayChristmasButton.addEventListener("click", displayChristmas);
+
+//Function to remove Christmas theme and return to Day/Night background setting
+function removeChristmas() {
+  //debugger;
+  let background = document.querySelector("#primary-card");
+  background.classList.remove("christmas-mode");
+  themeGridElementHTML = "";
+  themeGridElement.innerHTML = themeGridElementHTML;
+
+  displayChristmasButtonHTML = "🎅";
+  displayChristmasButton = document.getElementById("theme-button");
+  displayChristmasButton.innerHTML = displayChristmasButtonHTML;
+  displayChristmasButton.addEventListener("click", displayChristmas);
+}
 //Sunset
 
 function displaySunset(timestamp) {
@@ -371,12 +402,28 @@ function showCelsius() {
 let degCButton = document.querySelector("#deg-c-button");
 degCButton.addEventListener("click", showCelsius);
 
+//let themeButton = document
+//.getElementById("theme-button")
+//.addEventListener("click", removeChristmas);
+//document.getElementById("try").addEventListener("click", function(){
+
 let forecastApiUrl = null;
 let tempC = null;
 let maxTempC = null;
 let minTempC = null;
 let maxTempF = null;
 let minTempF = null;
-let forecast = null;
-let background = document.querySelector(".main-card");
 let weatherIcon = null;
+let forecast = null;
+
+//let background = document.querySelector(".main-card");
+let themeGridElement = document.querySelector(".theme-grid");
+let themeGridElementHTML = null;
+
+//let removeChristmasButton = null;
+//let themeButtonHTML = null;
+//let removeChristmasButtonHTML = null;
+//let displayChristmasButton = null;
+//let displayChristmasButtonHTML = null;
+//let easterButton = null;
+//let halloweenButton = null;

@@ -107,6 +107,7 @@ footer {
 
 .feat-icon {
   display: block;
+  margin: 0 auto;
   width: 180px;
 }
 
@@ -199,8 +200,8 @@ footer {
   color: #eceed5;
 }
 
-.christmas-button {
-  padding: 4px 2px 0px 2px;
+#theme-button {
+  padding: 3px 2px 0px 2px;
   font-size: 17px;
   border-radius: 50%;
 }
@@ -217,27 +218,21 @@ footer {
   color: #eceed5;
 }
 
+.christmas-tree {
+  display: inline-block;
+  position: relative;
+}
+
+.flip-horizontally {
+  transform: scaleX(-1);
+}
+
 #current-description {
   text-align: center;
   text-transform: capitalize;
   font-size: 25px;
   position: relative;
   top: -15px;
-}
-
-.christmas-tree {
-  display: inline-block;
-  position: relative;
-}
-
-#tree-1 {
-  ***margin-left: -150px;
-  ***margin-bottom: -50px;
-}
-
-#tree-2 {
-  ***margin-left: -150px;
-  ***margin-bottom: -50px;
 }
 
 #forecast-icon {

@@ -132,12 +132,9 @@ function showTemp(fetchedTemp) {
   changeBackground();
   displayThemeButton();
 }
-//what();
-//function what(){
-// document.getElementById('hello').innerHTML = '<p>hi</p>';
+
 //Function to change background colour scheme depending on if the icon code contains "d" or "n"
 function changeBackground() {
-  //debugger;
   let background = document.querySelector("#primary-card");
   if (weatherIcon.includes("n")) {
     background.classList.remove("day-time");
@@ -149,10 +146,54 @@ function changeBackground() {
 }
 
 function displayThemeButton() {
-  //let themeButton = document.querySelector("#theme-button");
-  debugger;
+  //let month = "Oct";
+  if (month === "Oct") {
+    let pumpkinButton = document.querySelector(".bg-theme-button");
+    pumpkinButton.setAttribute("id", "pumpkin-button");
+    pumpkinButton = document.getElementById("pumpkin-button");
+    let pumpkinButtonHTML = "🎃";
+    pumpkinButton.innerHTML = pumpkinButtonHTML;
+
+    function displayHalloween() {
+      let background = document.querySelector("#primary-card");
+      background.classList.add("halloween-mode");
+
+      let themeGridElement = document.querySelector(".theme-grid");
+      let themeGridElementHTML = `
+  <div class="row">
+  <div class="col"><img
+      src="images/halloweenbanner.png"
+      alt="Halloween"
+      width="400px"
+      height="320px"
+      id="halloween-banner"
+      />
+      </div>`;
+      themeGridElement.innerHTML = themeGridElementHTML;
+
+      pumpkinButtonHTML = "🎨";
+      pumpkinButton.innerHTML = pumpkinButtonHTML;
+
+      let halloweenFooter = document.getElementById("footer");
+      halloweenFooter.style.color = "#33c432";
+
+      function removeHalloween() {
+        themeGridElementHTML = "";
+        themeGridElement.innerHTML = themeGridElementHTML;
+        background.classList.remove("halloween-mode");
+
+        pumpkinButtonHTML = "🎃";
+        pumpkinButton.innerHTML = pumpkinButtonHTML;
+
+        halloweenFooter.style.color = "rgb(33, 37, 41)";
+        displayThemeButton();
+      }
+      pumpkinButton.addEventListener("click", removeHalloween);
+    }
+    pumpkinButton.addEventListener("click", displayHalloween);
+  }
+
   if (month === "Nov" || month === "Dec") {
-    // debugger;
     let santaButton = document.querySelector(".bg-theme-button");
     santaButton.setAttribute("id", "santa-button");
     santaButton = document.getElementById("santa-button");
@@ -186,51 +227,26 @@ function displayThemeButton() {
       /></div>
       `;
       themeGridElement.innerHTML = themeGridElementHTML;
-      //let themeButton = document.querySelector(".bg-theme-button");
+
       santaButton.setAttribute("id", "theme-button");
-      //themeButton = document
-      // .getElementById("santa-button")
-      // .setAttribute("id", "theme-button");
-      // themeButton = document.getElementById("theme-button");
-      // let themeButtonHTML = "🎨";
-      //themeButton.innerHTML = themeButtonHTML;
-      //themeButton.addEventListener("click", removeChristmas);
+
       santaButtonHTML = "🎨";
       santaButton.innerHTML = santaButtonHTML;
 
       function removeChristmas() {
-        //debugger;
-        //let background = document.querySelector("#primary-card");
         themeGridElementHTML = "";
         themeGridElement.innerHTML = themeGridElementHTML;
         background.classList.remove("christmas-mode");
 
-        //let santaButton = document.querySelector(".bg-theme-button");
-        //santaButton.setAttribute("id", "santa-button");
         santaButtonHTML = "🎅";
         santaButton.innerHTML = santaButtonHTML;
         displayThemeButton();
-        //santaButton.addEventListener("click", displayThemeButton);
       }
       santaButton.addEventListener("click", removeChristmas);
     }
     santaButton.addEventListener("click", displayChristmas);
   }
 }
-
-//Function to change background theme if Christmas button is clicked
-
-//Function to remove Christmas theme and return to Day/Night background setting
-
-//____________Here??
-//displayThemeButton();
-
-// let santaButton = document.getElementById("theme-button");
-// santaButton.setAttribute("id", "santa-button");
-
-//let santaButtonHTML = "🎅";
-//santaButton.innerHTML = santaButtonHTML;
-//santaButton.addEventListener("click", displayChristmas);
 
 //Sunset
 

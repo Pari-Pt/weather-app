@@ -84,7 +84,7 @@ Three festive themes were implemented based on the current Month:
 If the current month is included in the above theme list, then the Theme Button will appear with either a "Bunny", "Pumpkin" or "Santa" icon.
 If the current month is not included in the above theme list, then a happy face emoji will display within the Theme Button. If this button is clicked, an alert will display indicating that there are special themes available in the above-listed months.
 
-Once a theme has been activated, cities can be searched as normal while maintaining the theme. If the user wishes to remove the theme, they need only click the button again. 
+Once a theme has been activated, cities can be searched as normal while maintaining the theme. If the user wishes to remove the theme, they need to <strong>click the button twice</strong> <em>This is a small bug which will be rectified after gaining a stronger understanding of functions and how to circumvent certain situations</em>
   <h3>Built with</h3>
 <p>This Application was built with the following technologies:
  <ul>

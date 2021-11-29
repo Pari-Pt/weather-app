@@ -183,8 +183,8 @@ button {
 .night-time {
   background: radial-gradient(
     circle at 1.8% 4.8%,
-    rgb(17, 23, 58) 0%,
-    rgb(58, 85, 148) 90%
+    rgb(48, 55, 95) 0%,
+    rgb(110, 136, 199) 90%
   );
   color: #eceed5;
   transition-duration: 2s;

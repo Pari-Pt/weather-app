@@ -32,8 +32,8 @@
    A description regarding the weather situation e.g. "Clear Sky".
   </li>
   </ul>
-  </p>
-  The user is also able to interact with the following on the right hand side of the Application:
+  
+ The user is also able to interact with the following on the right hand side of the Application:
   <ul>
  <li>
  A Search Engine
@@ -51,9 +51,10 @@
   A Theme button
  </li>
  </ul>
- </p>
- <h4>Searching for a city</h4>
- <p>The user may search for a city by inputting the name of a city into the search engine and submitting/pressing enter. The city name is then called by the API, and the current weather data for that city shall be displayed. Depending on the weather, and the time of day, the Application may appear different. For example, if it has already passed sunset in the searched city, the background of the App shall be darker than if it was daytime. In addition, the icons on the Application will change depending on the weather conditions. For example, if it was raining in the searched city, the icon with a cloud and rain would be displayed.
+ 
+
+<h4>Searching for a city</h4>
+<p>The user may search for a city by inputting the name of a city into the search engine and submitting/pressing enter. The city name is then called by the API, and the current weather data for that city shall be displayed. Depending on the weather, and the time of day, the Application may appear different. For example, if it has already passed sunset in the searched city, the background of the App shall be darker than if it was daytime. In addition, the icons on the Application will change depending on the weather conditions. For example, if it was raining in the searched city, the icon with a cloud and rain would be displayed.
 <br>     
 If 0 characters are submitted into the search engine, an alert will be displayed requesting the user to search for a city.
 <br>
@@ -65,10 +66,10 @@ If the city in which the user submitted is not found, the display will not chang
 <p>The "Current Location" button, when pressed, will request permission for the user's location. In order for this facility to be executed, the user needs to grant permission. Once granted, Geolocation is used to pinpoint the coordinates (longitude and latitude) of the user's device. This information is then fed into a API call, which in turn responds and displays the current weather data for the city associated with those coordinates. 
  </p>
 
- <h4>Units</h4>
+<h4>Units</h4>
  <p>The Application displays the weather data in metric units (°C for temperature and km/h for wind speed). However, if the user prefers, it is possible to display temperatures in °F by pressing the "°F" button. Temperatures can be returned to metric by pressing the "°C" button. The button corresponding to the equipped unit shall appear darker with no pointer appearing during hover. When the other unit button is pressed, the reverse shall occur.</p>
 
-<h5>Themes</h5>
+<h4>Themes</h4>
 Three festive themes were implemented based on the current Month:
 <ol>
  <li>
@@ -85,7 +86,8 @@ If the current month is included in the above theme list, then the Theme Button 
 If the current month is not included in the above theme list, then a happy face emoji will display within the Theme Button. If this button is clicked, an alert will display indicating that there are special themes available in the above-listed months.
 
 Once a theme has been activated, cities can be searched as normal while maintaining the theme. If the user wishes to remove the theme, they need to <strong>click the button twice</strong> <em>This is a small bug which will be rectified after gaining a stronger understanding of functions and how to circumvent certain situations</em>
-  <h3>Built with</h3>
+
+<h4>Built with</h4>
 <p>This Application was built with the following technologies:
  <ul>
   <li>
@@ -106,12 +108,12 @@ Once a theme has been activated, cities can be searched as normal while maintain
   </ul>
   </p>
   
- <h3>Future Updates</h3>
+ <h4>Future Updates</h4>
 <div>[] Responsive on a multitude of devices</div>
 <div>[] React JS implementation</div>
 <div>[] Color palette button to customise background as the user wishes</div>
 
-<h3>About the Programmer - Seonah Nathali</h3>
+<h2>About the Programmer - Seonah Nathali</h2>
 <p>Seonah Nathali is an up-and-coming front-end web developer studying Pro at SheCodes. Keen to develop and demonstrate her skills, she is developing her skills in preparation for a career-change. Previously a forensic scientist and crime investigator, she has a multitude of transferable skills which, combined with her passion for programming would be an asset to any team or organisation.
  <br>
 GitHub: https://github.com/Seo-Pt/

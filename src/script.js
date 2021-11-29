@@ -115,7 +115,6 @@ function showTemp(fetchedTemp) {
   convertTimezone(fetchedTemp.data.timezone * 1000);
   getForecast(fetchedTemp.data.coord);
   changeBackground();
-  displayThemeButton();
 }
 
 function changeBackground() {
@@ -127,6 +126,7 @@ function changeBackground() {
     background.classList.remove("night-time");
     background.classList.add("day-time");
   }
+  displayThemeButton();
 }
 
 function displayThemeButton() {
@@ -161,9 +161,13 @@ function displayThemeButton() {
 
     function displayEaster() {
       let background = document.querySelector("#primary-card");
-      background.classList.replace("day-time", "christmas-mode");
-      background.classList.replace("night-time", "christmas-mode");
-
+      if (background.classList.contains("night-time")) {
+        background.classList.add("easter-mode");
+        background.classList.remove("night-time");
+      } else {
+        background.classList.add("easter-mode");
+        background.classList.remove("day-time");
+      }
       let themeGridElement = document.querySelector(".theme-grid");
       let themeGridElementHTML = `
   <div class="row">
@@ -207,7 +211,6 @@ function displayThemeButton() {
         bunnyButtonHTML = "🐇";
         bunnyButton.innerHTML = bunnyButtonHTML;
 
-        displayThemeButton();
         changeBackground();
       }
       bunnyButton.addEventListener("click", removeEaster);
@@ -223,8 +226,13 @@ function displayThemeButton() {
 
     function displayHalloween() {
       let background = document.querySelector("#primary-card");
-      background.classList.replace("day-time", "christmas-mode");
-      background.classList.replace("night-time", "christmas-mode");
+      if (background.classList.contains("night-time")) {
+        background.classList.add("halloween-mode");
+        background.classList.remove("night-time");
+      } else {
+        background.classList.add("halloween-mode");
+        background.classList.remove("day-time");
+      }
 
       let halloweenBannerElement = document.querySelector(".bottom-banner");
       halloweenBannerElement.classList.add("halloween-banner");
@@ -256,7 +264,6 @@ function displayThemeButton() {
         pumpkinButton.innerHTML = pumpkinButtonHTML;
 
         halloweenFooter.style.color = "rgb(33, 37, 41)";
-        displayThemeButton();
         changeBackground();
       }
       pumpkinButton.addEventListener("click", removeHalloween);
@@ -274,8 +281,16 @@ function displayThemeButton() {
     function displayChristmas() {
       let background = document.querySelector("#primary-card");
 
-      background.classList.replace("day-time", "christmas-mode");
-      background.classList.replace("night-time", "christmas-mode");
+      if (background.classList.contains("night-time")) {
+        background.classList.add("christmas-mode");
+        background.classList.remove("night-time");
+      } else {
+        background.classList.add("christmas-mode");
+        background.classList.remove("day-time");
+      }
+
+      //background.classList.replace("day-time", "christmas-mode");
+      // background.classList.replace("night-time", "christmas-mode");
 
       let themeGridElement = document.querySelector(".theme-grid");
       let themeGridElementHTML = `
@@ -328,7 +343,6 @@ function displayThemeButton() {
         christmasBannerElement.classList.remove("christmas-banner");
         santaButtonHTML = "🎅";
         santaButton.innerHTML = santaButtonHTML;
-        displayThemeButton();
         changeBackground();
       }
       santaButton.addEventListener("click", removeChristmas);

@@ -4,10 +4,10 @@ body {
 h1,
 h2,
 h5 {
-  padding: none;
-  text-align: left;
   display: block;
   margin-left: 0 auto;
+  padding: none;
+  text-align: left;
 }
 
 h1 {
@@ -27,12 +27,12 @@ input {
   display: inline-block;
   font-size: 15px;
   height: 30px;
+  line-height: 25px;
   margin-right: auto;
   margin-top: 15px;
+  padding: 4px;
   text-align: left;
   width: 150px;
-  padding: 4px;
-  line-height: 25px;
 }
 
 button {
@@ -41,20 +41,20 @@ button {
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
   display: inline-block;
   font-size: 18px;
-  margin-top: 5px;
-  margin-right: auto;
-  text-align: center;
   line-height: 25px;
+  margin-right: auto;
+  margin-top: 5px;
+  text-align: center;
 }
 
 .main-card {
   border: 2px solid #000000;
   display: block;
   margin: 0 auto;
-  top: 20px;
   max-width: 50%;
   max-height: 30%;
   padding: 6px;
+  top: 20px;
 }
 
 .card-body {
@@ -99,12 +99,12 @@ button {
 
 .feat-icon-card {
   background: none;
+  block-size: auto;
   border: none;
   display: block;
   margin: auto;
   top: -130px;
   width: fit-content;
-  block-size: auto;
 }
 
 .feat-icon {
@@ -114,20 +114,20 @@ button {
 }
 
 .forecast-title {
-  text-align: center;
   font-size: 30px;
   height: 60px;
+  text-align: center;
   text-decoration: none;
 }
 .forecast-card {
   background: transparent;
   border: none;
   display: block;
+  font-size: 20;
   margin: 0 auto;
-  top: -90px;
   max-width: 85%;
   text-align: center;
-  font-size: 20;
+  top: -90px;
 }
 .forecast-icon {
   width: 55px;
@@ -135,12 +135,12 @@ button {
 
 .submit {
   display: inline-block;
-  margin: 0 auto;
-  padding: 1px 2px;
   font-size: 15px;
+  margin: 0 auto;
   margin-top: 5px;
   margin-right: auto;
   margin-left: 2px;
+  padding: 1px 2px;
   text-align: center;
 }
 
@@ -151,8 +151,8 @@ button {
 
 .forecast-description {
   font-size: 17px;
-  text-transform: capitalize;
   overflow-wrap: normal;
+  text-transform: capitalize;
 }
 
 .weekday {
@@ -164,8 +164,8 @@ button {
   font-size: 18px;
 }
 .min-temp {
-  opacity: 0.8;
   font-size: 18px;
+  opacity: 0.8;
 }
 
 .day-time {
@@ -176,8 +176,8 @@ button {
     #fff1eb 60%,
     #ace0f9 85%
   );
-  transition-duration: 2s;
   color: rgb(33, 37, 41);
+  transition-duration: 2s;
 }
 
 .night-time {
@@ -186,23 +186,23 @@ button {
     rgb(17, 23, 58) 0%,
     rgb(58, 85, 148) 90%
   );
-  transition-duration: 2s;
   color: #eceed5;
+  transition-duration: 2s;
 }
 
 .gitHub-link {
   color: rgb(87, 179, 221);
 }
 .bg-theme-button {
-  padding: 3px 2px 0px 2px;
-  font-size: 17px;
   border-radius: 50%;
+  font-size: 17px;
+  padding: 3px 2px 0px 2px;
 }
 
 #theme-button {
-  padding: 3px 2px 0px 2px;
-  font-size: 17px;
   border-radius: 50%;
+  font-size: 17px;
+  padding: 3px 2px 0px 2px;
 }
 
 .easter-mode {
@@ -215,10 +215,10 @@ button {
 
 .easter-banner {
   display: block;
-  position: relative;
-  text-align: center;
   margin: auto;
   margin-top: -100px;
+  position: relative;
+  text-align: center;
 }
 .halloween-mode {
   background: linear-gradient(
@@ -229,22 +229,22 @@ button {
     #2f9c13 75%,
     #110a00 140%
   );
-  transition-duration: 2s;
   color: #eceed5;
+  transition-duration: 2s;
 }
 
 #halloween-banner {
   display: block;
-  position: relative;
-  text-align: center;
   margin: auto;
   margin-top: -140px;
   margin-bottom: -50px;
+  position: relative;
+  text-align: center;
 }
 #santa-button {
-  padding: 3px 2px 0px 2px;
-  font-size: 17px;
   border-radius: 50%;
+  font-size: 17px;
+  padding: 3px 2px 0px 2px;
 }
 
 .christmas-mode {
@@ -255,24 +255,24 @@ button {
     #940606 74%,
     #fff1eb 140%
   );
-  transition-duration: 2s;
   color: #eceed5;
+  transition-duration: 2s;
 }
 
 #tree-1 {
   display: block;
-  position: relative;
   left: -130px;
-  top: -80px;
   opacity: 0.8;
+  position: relative;
+  top: -80px;
 }
 
 #tree-2 {
   display: block;
+  opacity: 0.8;
   position: relative;
   right: -130px;
   top: -80px;
-  opacity: 0.8;
 }
 
 .flip-horizontally {
@@ -281,27 +281,26 @@ button {
 
 .christmas-banner {
   display: block;
+  margin-bottom: -80px;
   position: relative;
   text-align: center;
   top: -100px;
-  margin-bottom: -80px;
 }
 
 #easter-chick-img {
   display: block;
+  left: -205px;
+  opacity: 0.8;
   position: relative;
   text-align: center;
   top: -150px;
-  left: -205px;
-
-  opacity: 0.8;
 }
 
 #current-description {
-  text-align: center;
-  text-transform: capitalize;
   font-size: 25px;
   position: relative;
+  text-align: center;
+  text-transform: capitalize;
   top: -15px;
 }
 
@@ -311,9 +310,8 @@ button {
 
 #footer {
   display: block;
-  position: relative;
   font-size: 20px;
-
   height: 30px;
+  position: relative;
   text-align: center;
 }

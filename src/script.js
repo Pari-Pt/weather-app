@@ -289,9 +289,6 @@ function displayThemeButton() {
         background.classList.remove("day-time");
       }
 
-      //background.classList.replace("day-time", "christmas-mode");
-      // background.classList.replace("night-time", "christmas-mode");
-
       let themeGridElement = document.querySelector(".theme-grid");
       let themeGridElementHTML = `
   <div class="row">

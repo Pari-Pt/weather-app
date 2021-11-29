@@ -79,7 +79,7 @@ Three festive themes were implemented based on the current Month:
  </li>
  <li>
   November/December - Christmas
-  <li>
+  </li>
    </ol>
 If the current month is included in the above theme list, then the Theme Button will appear with either a "Bunny", "Pumpkin" or "Santa" icon.
 If the current month is not included in the above theme list, then a happy face emoji will display within the Theme Button. If this button is clicked, an alert will display indicating that there are special themes available in the above-listed months.

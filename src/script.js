@@ -130,7 +130,6 @@ function changeBackground() {
 }
 
 function displayThemeButton() {
-  let month = "Nov";
   let themelessMonths = [
     "Jan",
     "Feb",
@@ -484,7 +483,7 @@ function convertForecastFahrenheit() {
         </div>
         <div class="col">
         
-        <span class="max-temp">${maxTempF}</span>
+        <span class="max-temp"><sub>H &nbsp</sub>${maxTempF}</span>
         <span>-</span>
         <span class="min-temp">${minTempF}<sub>&nbsp L</sub></span>
           </div>

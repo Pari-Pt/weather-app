@@ -1,4 +1,3 @@
-//Display the current date and time
 let now = new Date();
 
 let hours = now.getHours();
@@ -38,8 +37,6 @@ currentTime.innerHTML = `${hours}:${minutes}`;
 let currentDate = document.querySelector("#current-date");
 currentDate.innerHTML = `${day}, ${date} ${month}`;
 
-// Default city set to Porto
-
 function defaultCity(city) {
   let units = "metric";
   let apiKey = "ea283403784bc63466a22fcf17ab8227";
@@ -47,11 +44,6 @@ function defaultCity(city) {
   axios.get(apiUrl).then(showTemp);
 }
 defaultCity("Porto");
-
-//Search engine
-//Lowercase
-//If search is greater than 0 characters then the API will call
-//If not, then an alert will appear
 
 function citySearch(event) {
   event.preventDefault();
@@ -69,11 +61,6 @@ function citySearch(event) {
 }
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", citySearch);
-
-//Process and display fetched temp,
-//Process and display max and min temps
-//Searched City name displayed as per API call
-//Display local city name when geolocation used
 
 function showTemp(fetchedTemp) {
   let h1 = document.querySelector("#current-city");
@@ -124,8 +111,6 @@ function showTemp(fetchedTemp) {
   let citySearchWindSpeedElement = document.querySelector("#wind-speed");
   citySearchWindSpeedElement.innerHTML = `Wind: ${citySearchWindSpeed}km/h`;
 
-  //degCButton.classList.add("inactive");
-  //degFButton.classList.remove("inactive");
   displaySunset(fetchedTemp.data.sys.sunset * 1000);
   convertTimezone(fetchedTemp.data.timezone * 1000);
   getForecast(fetchedTemp.data.coord);
@@ -133,7 +118,6 @@ function showTemp(fetchedTemp) {
   displayThemeButton();
 }
 
-//Function to change background colour scheme depending on if the icon code contains "d" or "n"
 function changeBackground() {
   let background = document.querySelector("#primary-card");
   if (weatherIcon.includes("n")) {
@@ -146,7 +130,91 @@ function changeBackground() {
 }
 
 function displayThemeButton() {
-  //let month = "Oct";
+  let month = "Nov";
+  let themelessMonths = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+  ];
+
+  if (themelessMonths.includes(month)) {
+    let themelessMonthButton = document.querySelector(".bg-theme-button");
+    themelessMonthButtonHTML = "😜";
+    themelessMonthButton.innerHTML = themelessMonthButtonHTML;
+
+    function notifyTheme() {
+      alert("Click this button in Apr/Oct/Nov/Dec for special themes!");
+    }
+    themelessMonthButton.addEventListener("click", notifyTheme);
+  }
+
+  if (month === "Apr") {
+    let bunnyButton = document.querySelector(".bg-theme-button");
+    bunnyButton.setAttribute("id", "bunny-button");
+    bunnyButton = document.getElementById("bunny-button");
+    let bunnyButtonHTML = "🐇";
+    bunnyButton.innerHTML = bunnyButtonHTML;
+
+    function displayEaster() {
+      let background = document.querySelector("#primary-card");
+      background.classList.replace("day-time", "christmas-mode");
+      background.classList.replace("night-time", "christmas-mode");
+
+      let themeGridElement = document.querySelector(".theme-grid");
+      let themeGridElementHTML = `
+  <div class="row">
+  <div class="col"><img
+      src="images/easterchick.png"
+      alt="Easter Chick"
+      width="250px"
+      height="190px"
+      id="easter-chick-img"
+      />
+     </div>
+      `;
+      themeGridElement.innerHTML = themeGridElementHTML;
+
+      let easterBannerElement = document.querySelector(".bottom-banner");
+      easterBannerElement.classList.add("easter-banner");
+
+      let easterBannerElementHTML = `<img
+      src="images/easterbanner.png"
+      alt="Happy Easter"
+      width="270px"
+      height="150px"
+      id="easter-banner"
+      />
+      `;
+      easterBannerElement.innerHTML = easterBannerElementHTML;
+
+      bunnyButtonHTML = "🎨";
+      bunnyButton.innerHTML = bunnyButtonHTML;
+      bunnyButton.setAttribute("id", "theme-button");
+
+      function removeEaster() {
+        themeGridElementHTML = "";
+        themeGridElement.innerHTML = themeGridElementHTML;
+        background.classList.remove("easter-mode");
+
+        easterBannerElement.classList.remove("easter-banner");
+        easterBannerElementHTML = "";
+        easterBannerElement.innerHTML = easterBannerElementHTML;
+
+        bunnyButtonHTML = "🐇";
+        bunnyButton.innerHTML = bunnyButtonHTML;
+
+        displayThemeButton();
+        changeBackground();
+      }
+      bunnyButton.addEventListener("click", removeEaster);
+    }
+    bunnyButton.addEventListener("click", displayEaster);
+  }
   if (month === "Oct") {
     let pumpkinButton = document.querySelector(".bg-theme-button");
     pumpkinButton.setAttribute("id", "pumpkin-button");
@@ -156,37 +224,41 @@ function displayThemeButton() {
 
     function displayHalloween() {
       let background = document.querySelector("#primary-card");
-      background.classList.add("halloween-mode");
+      background.classList.replace("day-time", "christmas-mode");
+      background.classList.replace("night-time", "christmas-mode");
 
-      let themeGridElement = document.querySelector(".theme-grid");
-      let themeGridElementHTML = `
-  <div class="row">
-  <div class="col"><img
+      let halloweenBannerElement = document.querySelector(".bottom-banner");
+      halloweenBannerElement.classList.add("halloween-banner");
+      let halloweenBannerElementHTML = `<img
       src="images/halloweenbanner.png"
       alt="Halloween"
-      width="400px"
-      height="320px"
+      width="300px"
+      height="200px"
       id="halloween-banner"
       />
-      </div>`;
-      themeGridElement.innerHTML = themeGridElementHTML;
+      `;
+
+      halloweenBannerElement.innerHTML = halloweenBannerElementHTML;
 
       pumpkinButtonHTML = "🎨";
       pumpkinButton.innerHTML = pumpkinButtonHTML;
+      pumpkinButton.setAttribute("id", "theme-button");
 
       let halloweenFooter = document.getElementById("footer");
       halloweenFooter.style.color = "#33c432";
 
       function removeHalloween() {
-        themeGridElementHTML = "";
-        themeGridElement.innerHTML = themeGridElementHTML;
+        halloweenBannerElementHTML = "";
+        halloweenBannerElement.innerHTML = halloweenBannerElementHTML;
         background.classList.remove("halloween-mode");
 
+        halloweenBannerElement.classList.remove("halloween-banner");
         pumpkinButtonHTML = "🎃";
         pumpkinButton.innerHTML = pumpkinButtonHTML;
 
         halloweenFooter.style.color = "rgb(33, 37, 41)";
         displayThemeButton();
+        changeBackground();
       }
       pumpkinButton.addEventListener("click", removeHalloween);
     }
@@ -201,9 +273,10 @@ function displayThemeButton() {
     santaButton.innerHTML = santaButtonHTML;
 
     function displayChristmas() {
-      debugger;
       let background = document.querySelector("#primary-card");
-      background.classList.add("christmas-mode");
+
+      background.classList.replace("day-time", "christmas-mode");
+      background.classList.replace("night-time", "christmas-mode");
 
       let themeGridElement = document.querySelector(".theme-grid");
       let themeGridElementHTML = `
@@ -211,7 +284,7 @@ function displayThemeButton() {
   <div class="col"><img
       src="images/christmas-tree.svg"
       alt="Christmas Tree"
-      width="160px"
+      width="120px"
       height="100px"
       id="tree-1"
       />
@@ -220,13 +293,26 @@ function displayThemeButton() {
       <img
       src="images/christmas-tree.svg"
       alt="Christmas Tree"
-      width="160px"
+      width="120px"
       height="100px"
       id="tree-2"
       class="flip-horizontally"
-      /></div>
+      />
+      </div>
+      
+      
       `;
       themeGridElement.innerHTML = themeGridElementHTML;
+
+      let christmasBannerElement = document.querySelector(".bottom-banner");
+      christmasBannerElement.classList.add("christmas-banner");
+      let christmasBannerElementHTML = `
+      <img src="images/christmasbanner.png"
+      alt="Merry Christmas"
+      width="200px"
+      height="100px"
+      />`;
+      christmasBannerElement.innerHTML = christmasBannerElementHTML;
 
       santaButton.setAttribute("id", "theme-button");
 
@@ -238,17 +324,19 @@ function displayThemeButton() {
         themeGridElement.innerHTML = themeGridElementHTML;
         background.classList.remove("christmas-mode");
 
+        christmasBannerElementHTML = "";
+        christmasBannerElement.innerHTML = christmasBannerElementHTML;
+        christmasBannerElement.classList.remove("christmas-banner");
         santaButtonHTML = "🎅";
         santaButton.innerHTML = santaButtonHTML;
         displayThemeButton();
+        changeBackground();
       }
       santaButton.addEventListener("click", removeChristmas);
     }
     santaButton.addEventListener("click", displayChristmas);
   }
 }
-
-//Sunset
 
 function displaySunset(timestamp) {
   let citySunset = new Date(timestamp);
@@ -264,8 +352,6 @@ function displaySunset(timestamp) {
   let citySunsetElement = document.querySelector("#sunset-time");
   citySunsetElement.innerHTML = `Sunset: ${hours}:${minutes} UTC`;
 }
-
-//Timezone change
 
 function convertTimezone(timezone) {
   let cityTimezone = new Date(new Date().getTime() + timezone);
@@ -288,7 +374,6 @@ function convertTimezone(timezone) {
   cityTimezoneElement.innerHTML = `${hours}:${minutes}`;
 }
 
-//Fetch Forecast Data
 function getForecast(coordinates) {
   let apiKey = "ea283403784bc63466a22fcf17ab8227";
   let exclusions = "minutely,hourly,alerts";
@@ -296,8 +381,6 @@ function getForecast(coordinates) {
 
   axios.get(forecastApiUrl).then(displayForecast);
 }
-
-//Display Forecast Data
 
 function displayForecast(response) {
   forecast = response.data.daily;
@@ -311,11 +394,11 @@ function displayForecast(response) {
       forecastHTML =
         forecastHTML +
         `<div class="row row-cols-4 forecast-info border-bottom align-items-center">
-          <div class="col">${formatForecastDate(forecastDay.dt)}</div>
+          <div class="col weekday">${formatForecastDate(forecastDay.dt)}</div>
            <div class="col" id="forecast-icon-celsius">
             <img src="https://openweathermap.org/img/wn/${
               forecastDay.weather[0].icon
-            }@2x.png" class="sunny-icon" alt="${
+            }@2x.png" class="forecast-icon" alt="${
           forecastDay.weather[0].description
         }"/>
           </div>
@@ -337,8 +420,6 @@ function displayForecast(response) {
   forecastElement.innerHTML = forecastHTML;
 }
 
-//Format Forecast Day
-
 function formatForecastDate(timestamp) {
   let date = new Date(timestamp * 1000);
   let day = date.getDay();
@@ -346,7 +427,6 @@ function formatForecastDate(timestamp) {
   return days[day];
 }
 
-//Retrieve current position coordinates
 function getCurrentPosition() {
   navigator.geolocation.getCurrentPosition(retrievePosition);
 }
@@ -366,8 +446,6 @@ function retrievePosition(position) {
 
 let currentLocButton = document.querySelector("#locator-button");
 currentLocButton.addEventListener("click", getCurrentPosition);
-
-// Real data degC and degF conversions with button activity triggers
 
 function showFahrenheit() {
   degFButton.classList.add("inactive");
@@ -389,15 +467,15 @@ function convertForecastFahrenheit() {
       minTempC = Math.round(forecastDay.temp.min);
       maxTempF = Math.round(maxTempC * 1.8 + 32);
       minTempF = Math.round(minTempC * 1.8 + 32);
-      //minTempC = Math.round(forecastDay.temp.min);
+
       forecastHTML =
         forecastHTML +
         `<div class="row row-cols-4 forecast-info border-bottom align-items-center">
-          <div class="col">${formatForecastDate(forecastDay.dt)}</div>
+          <div class="col weekday">${formatForecastDate(forecastDay.dt)}</div>
            <div class="col" id="forecast-icon-fahrenheit">
             <img src="https://openweathermap.org/img/wn/${
               forecastDay.weather[0].icon
-            }@2x.png" class="sunny-icon" alt="${
+            }@2x.png" class="forecast-icon" alt="${
           forecastDay.weather[0].description
         }"/>
           </div>
@@ -434,11 +512,6 @@ function showCelsius() {
 let degCButton = document.querySelector("#deg-c-button");
 degCButton.addEventListener("click", showCelsius);
 
-//let themeButton = document
-//.getElementById("theme-button")
-//.addEventListener("click", removeChristmas);
-//document.getElementById("try").addEventListener("click", function(){
-
 let forecastApiUrl = null;
 let tempC = null;
 let maxTempC = null;
@@ -447,15 +520,3 @@ let maxTempF = null;
 let minTempF = null;
 let weatherIcon = null;
 let forecast = null;
-
-//let background = document.querySelector(".main-card");
-//let themeGridElement = document.querySelector(".theme-grid");
-//let themeGridElementHTML = null;
-
-//let removeChristmasButton = null;
-//let themeButtonHTML = null;
-//let removeChristmasButtonHTML = null;
-//let displayChristmasButton = null;
-//let displayChristmasButtonHTML = null;
-//let easterButton = null;
-//let halloweenButton = null;

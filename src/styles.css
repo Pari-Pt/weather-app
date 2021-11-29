@@ -47,30 +47,27 @@ button {
   line-height: 25px;
 }
 
-.button:hover {
-  cursor: pointer;
-}
-
-footer {
-  display: block;
-  font-size: 20px;
-  margin: auto;
-  height: 30px;
-  text-align: center;
-}
-
 .main-card {
   border: 2px solid #000000;
   display: block;
   margin: 0 auto;
   top: 20px;
-  max-width: 650px;
+  max-width: 50%;
+  max-height: 30%;
   padding: 6px;
 }
 
 .card-body {
   padding: 15px 10px 0px 10px;
 }
+.main-card-body {
+  max-height: 400px;
+}
+
+.button:hover {
+  cursor: pointer;
+}
+
 .date-display {
   font-size: 25px;
   text-align: right;
@@ -117,6 +114,7 @@ footer {
 }
 
 .forecast-title {
+  text-align: center;
   font-size: 30px;
   height: 60px;
   text-decoration: none;
@@ -131,22 +129,10 @@ footer {
   text-align: center;
   font-size: 20;
 }
-
-.sunny-icon {
-  width: 40px;
+.forecast-icon {
+  width: 55px;
 }
 
-.sun-cloud-icon {
-  width: 40px;
-}
-
-.cloud-rain-icon {
-  width: 40px;
-}
-
-.rain-lightning-icon {
-  width: 50px;
-}
 .submit {
   display: inline-block;
   margin: 0 auto;
@@ -162,22 +148,24 @@ footer {
   white-space: pre-wrap;
   overflow-wrap: normal;
 }
+
+.forecast-description {
+  font-size: 17px;
+  text-transform: capitalize;
+  overflow-wrap: normal;
+}
+
+.weekday {
+  font-size: 18px;
+}
+
 .max-temp {
   font-weight: bold;
-  font-size: 15px;
+  font-size: 18px;
 }
 .min-temp {
   opacity: 0.8;
-  font-size: 15px;
-}
-.gitHub-link {
-  color: rgb(87, 179, 221);
-}
-
-.forecast-description {
-  font-size: 15px;
-  text-transform: capitalize;
-  overflow-wrap: normal;
+  font-size: 18px;
 }
 
 .day-time {
@@ -185,16 +173,13 @@ footer {
     to top,
     #fff1eb -20%,
     #ace0f9 30%,
-    #fff1eb 47%,
+    #fff1eb 60%,
     #ace0f9 85%
   );
   transition-duration: 2s;
   color: rgb(33, 37, 41);
 }
 
-.icon-column {
-  background: red;
-}
 .night-time {
   background: radial-gradient(
     circle at 1.8% 4.8%,
@@ -205,6 +190,9 @@ footer {
   color: #eceed5;
 }
 
+.gitHub-link {
+  color: rgb(87, 179, 221);
+}
 .bg-theme-button {
   padding: 3px 2px 0px 2px;
   font-size: 17px;
@@ -217,13 +205,28 @@ footer {
   border-radius: 50%;
 }
 
+.easter-mode {
+  background: linear-gradient(
+    114.2deg,
+    rgb(121, 194, 243) 22.6%,
+    rgb(255, 180, 239) 67.7%
+  );
+}
+
+.easter-banner {
+  display: block;
+  position: relative;
+  text-align: center;
+  margin: auto;
+  margin-top: -100px;
+}
 .halloween-mode {
   background: linear-gradient(
     to top,
     #fff1eb -40%,
-    #110a00 -10%,
-    #e96e11 65%,
-    #2f9c13 80%,
+    #110a00 10%,
+    #e96e11 50%,
+    #2f9c13 75%,
     #110a00 140%
   );
   transition-duration: 2s;
@@ -232,9 +235,11 @@ footer {
 
 #halloween-banner {
   display: block;
-  position: absolute;
-  top: 100px;
-  left: -95px;
+  position: relative;
+  text-align: center;
+  margin: auto;
+  margin-top: -140px;
+  margin-bottom: -50px;
 }
 #santa-button {
   padding: 3px 2px 0px 2px;
@@ -254,13 +259,42 @@ footer {
   color: #eceed5;
 }
 
-.christmas-tree {
-  display: inline-block;
+#tree-1 {
+  display: block;
   position: relative;
+  left: -130px;
+  top: -80px;
+  opacity: 0.8;
+}
+
+#tree-2 {
+  display: block;
+  position: relative;
+  right: -130px;
+  top: -80px;
+  opacity: 0.8;
 }
 
 .flip-horizontally {
   transform: scaleX(-1);
+}
+
+.christmas-banner {
+  display: block;
+  position: relative;
+  text-align: center;
+  top: -100px;
+  margin-bottom: -80px;
+}
+
+#easter-chick-img {
+  display: block;
+  position: relative;
+  text-align: center;
+  top: -150px;
+  left: -205px;
+
+  opacity: 0.8;
 }
 
 #current-description {
@@ -273,4 +307,13 @@ footer {
 
 #forecast-icon {
   color: black;
+}
+
+#footer {
+  display: block;
+  position: relative;
+  font-size: 20px;
+
+  height: 30px;
+  text-align: center;
 }

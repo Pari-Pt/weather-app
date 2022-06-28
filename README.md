@@ -113,12 +113,12 @@ Once a theme has been activated, cities can be searched as normal while maintain
 <div>[] React JS implementation</div>
 <div>[] Color palette button to customise background as the user wishes</div>
 
-<h2>About the Programmer - Seonah Nathali</h2>
-<p>Seonah Nathali is an up-and-coming front-end web developer studying Pro at SheCodes. Keen to develop and demonstrate her skills, she is developing her skills in preparation for a career-change. Previously a forensic scientist and crime investigator, she has a multitude of transferable skills which, combined with her passion for programming would be an asset to any team or organisation.
+<h2>About the Programmer - Pari S. Nathali</h2>
+<p>Pari Nathali is an up-and-coming front-end web developer studying Pro at SheCodes. Keen to develop and demonstrate her skills, she is developing her skills in preparation for a career-change. Previously a forensic scientist and crime investigator, she has a multitude of transferable skills which, combined with her passion for programming would be an asset to any team or organisation.
  <br>
-GitHub: https://github.com/Seo-Pt/
+GitHub: https://github.com/Pari-Pt/
  <br>
 SheCodes: https://www.shecodesfoundation.org/students/337-seonah-nathali
  <br>
-LinkedIn: https://www.linkedin.com/in/seonah-n-a1a676218/
+LinkedIn: https://www.linkedin.com/in/pari-pt/
  </p>

@@ -37,6 +37,7 @@ currentTime.innerHTML = `${hours}:${minutes}`;
 let currentDate = document.querySelector("#current-date");
 currentDate.innerHTML = `${day}, ${date} ${month}`;
 
+
 function defaultCity(city) {
   let units = "metric";
   let apiKey = "ea283403784bc63466a22fcf17ab8227";
@@ -140,6 +141,7 @@ function displayThemeButton() {
     "Aug",
     "Sep",
   ];
+ 
 
   if (themelessMonths.includes(month)) {
     let themelessMonthButton = document.querySelector(".bg-theme-button");
